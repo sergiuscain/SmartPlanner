@@ -1,3 +1,5 @@
+using SmartPlanner.Services.Extensions;
+
 namespace SmartPlanner
 {
     public class Program
@@ -7,7 +9,7 @@ namespace SmartPlanner
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.ConfigureServices();
 
             var app = builder.Build();
 
