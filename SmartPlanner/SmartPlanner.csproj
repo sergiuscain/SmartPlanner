@@ -11,7 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Entities\" />
     <Folder Include="Docs\" />
     <Folder Include="Tests\IntegrationTests\" />
     <Folder Include="Tests\UnitTests\" />
