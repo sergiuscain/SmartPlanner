@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SmartPlanner.Models;
+using SmartPlanner.TestData;
 using System.Diagnostics;
 
 namespace SmartPlanner.Controllers
@@ -13,9 +14,10 @@ namespace SmartPlanner.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var notes = DataForTesting.Notes;
+            return View(notes);
         }
 
         public IActionResult Privacy()

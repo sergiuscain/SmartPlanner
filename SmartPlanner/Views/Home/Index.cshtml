@@ -1,7 +1,10 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model List<NoteModel>
 
-<div class="text-center">
-    <h1>Home test</h1>
+<div>
+    <div class="row">
+    @foreach (var note in Model)
+        {
+            @await Html.PartialAsync("/Views/Home/Components/NoteCard.cshtml", note)
+        }
+    </div>
 </div>

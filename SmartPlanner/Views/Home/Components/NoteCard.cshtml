@@ -1,9 +1,9 @@
 ﻿@model NoteModel
 
-<div class="col-3 m-1 card  myCardParam">
+<div class="col-3 m-1 card  myCardParam cardParam">
     <div class="card-body d-flex flex-column">
         <h5 class="card-title">@Model.Title</h5>
         <p class="card-text">@Model.Description</p>
-        <a asp-area="" asp-controller="Home" asp-action="Delete" class="btn btn-danger mt-auto"><img src="/img/deleteIcon.png" alt="Удалить"/></a>
+        <button asp-area="" asp-controller="Home" asp-action="Delete" class="btn btn-danger mt-auto">Удалить</button>
     </div>
 </div>
