@@ -30,6 +30,8 @@ body {
 .mainColor{
     background-color: rgb(18, 23, 43);
     color: blueviolet;
+    border-color: blueviolet;
+    border-width: 1px;
 }
 .cardParam {
   width: 20vmax;
@@ -38,4 +40,12 @@ body {
   background-color: rgb(98, 95, 134);
   color: rgb(248, 246, 215);
   border-radius: 5%;
+}
+
+.inputBlock{
+  background-color: rgb(140, 152, 221);
+  color: rgb(233, 245, 255);
+  width: 50%;
+  height: 30px;
+  margin: 1px;
 }
