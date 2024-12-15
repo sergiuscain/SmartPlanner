@@ -5,7 +5,7 @@ namespace SmartPlanner.Data
 {
     public class DataContext : DbContext
     {
-        public DbSet<Note> Users { get; set; }
+        public DbSet<Note> Notes { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
