@@ -1,6 +1,6 @@
 ﻿namespace SmartPlanner.Models
 {
-    public class NoteDto
+    public class NoteViewModel
     {
         public Guid Id { get; set; }
         public string Title { get; set; }

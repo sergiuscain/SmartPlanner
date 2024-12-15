@@ -1,6 +1,6 @@
 namespace SmartPlanner.Models
 {
-    public class ErrorViewDto
+    public class ErrorViewModel
     {
         public string? RequestId { get; set; }
 
