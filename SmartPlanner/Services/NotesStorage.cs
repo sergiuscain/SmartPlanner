@@ -25,8 +25,7 @@ namespace SmartPlanner.Services
         }
         public async Task<Note> AddAsync(Note note)
         {
-            if (note.Id == null) 
-                note.Id = Guid.NewGuid();
+            note.Id = Guid.NewGuid();
             await _context.Notes.AddAsync(note);
             await _context.SaveChangesAsync();
             return note;
