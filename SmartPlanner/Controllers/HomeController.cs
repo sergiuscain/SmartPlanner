@@ -3,6 +3,7 @@ using SmartPlanner.Models;
 using SmartPlanner.Services;
 using SmartPlanner.TestData;
 using System.Diagnostics;
+using SmartPlanner.Helpers;
 
 namespace SmartPlanner.Controllers
 {
@@ -19,7 +20,8 @@ namespace SmartPlanner.Controllers
         public async Task<IActionResult> Index()
         {
             var notes = await _storage.GetAllTestMethodAsync();
-            return View(notes);
+            var notesVm = notes.ToViewModel();
+            return View(notesVm);
         }
 
 
