@@ -4,6 +4,6 @@
     <div class="card-body d-flex flex-column">
         <h5 class="card-title">@Model.Title</h5>
         <p class="card-text">@Model.Description</p>
-        <button asp-area="" asp-controller="Home" asp-action="Delete" class="btn btn-danger mt-auto">Удалить</button>
+        <a asp-area="" asp-controller="Home" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger mt-auto">Удалить</a>
     </div>
 </div>

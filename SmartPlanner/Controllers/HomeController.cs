@@ -17,13 +17,19 @@ namespace SmartPlanner.Controllers
             _storage = storage;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> IndexAsync()
         {
             var notes = await _storage.GetAllTestMethodAsync();
             var notesVm = notes.ToViewModel();
             return View(notesVm);
         }
 
+        public async Task<IActionResult> DeleteAsync(Guid id)
+        {
+            await _storage.DeleteAsync(id);
+
+            return RedirectToAction("Index");
+        }
 
         public IActionResult Privacy()
         {
