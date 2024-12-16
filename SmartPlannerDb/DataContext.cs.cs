@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmartPlanner.Data.Entities;
 
-namespace SmartPlanner.Data
+namespace SmartPlannerDb
 {
     public class DataContext : DbContext
     {
