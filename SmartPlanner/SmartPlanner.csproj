@@ -7,13 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\css\MainStyles.css" />
+    <Compile Remove="Docs\**" />
+    <Compile Remove="Tests\**" />
+    <Content Remove="Docs\**" />
+    <Content Remove="Tests\**" />
+    <EmbeddedResource Remove="Docs\**" />
+    <EmbeddedResource Remove="Tests\**" />
+    <None Remove="Docs\**" />
+    <None Remove="Tests\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Docs\" />
-    <Folder Include="Tests\IntegrationTests\" />
-    <Folder Include="Tests\UnitTests\" />
+    <None Include="wwwroot\css\MainStyles.css" />
   </ItemGroup>
 
   <ItemGroup>
