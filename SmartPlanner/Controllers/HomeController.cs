@@ -37,6 +37,18 @@ namespace SmartPlanner.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<IActionResult> Note(Guid id)
+        {
+            var note = await _storage.GetByIdAsync(id);
+            var noteVm = note.ToViewModel();
+            return View(noteVm);
+        }
+        public async Task<IActionResult> Update(NoteViewModel note)
+        {
+            var noteDb = note.ToDbModel();
+            await _storage.UpdateAsync(noteDb);
+            return RedirectToAction("Note", note);
+        }
         public IActionResult Privacy()
         {
             return View();
