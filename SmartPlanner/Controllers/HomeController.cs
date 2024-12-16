@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SmartPlanner.Models;
+using SmartPlanner.Services;
 using SmartPlanner.TestData;
 using System.Diagnostics;
 
@@ -8,8 +9,9 @@ namespace SmartPlanner.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly INotesStorage _storage;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, )
         {
             _logger = logger;
         }
