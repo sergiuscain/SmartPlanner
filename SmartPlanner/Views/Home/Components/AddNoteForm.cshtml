@@ -1,9 +1,10 @@
-﻿<div class="btn">
-    <form>
+﻿@model NoteViewModel
+<div class="btn">
+    <form method="post">
         <p class="mainColor">Заголовок</p>
-        <input class="inputBlock" type="text" id="inputText" placeholder="Введите текст заметки" /><br />
+        <input class="inputBlock" type="text" id="inputText" placeholder="Введите текст заметки"  asp-for="Title"/><br />
         <p class="mainColor">Описание</p>
-        <textarea class="inputBlock" width="70%" type="text" id="inputText" placeholder="Введите описание"></textarea><br />
-        <button class="mainColor" type="button">Создать</button>
+        <textarea class="inputBlock" width="70%" type="text" id="inputText" placeholder="Введите описание" asp-for="Description"></textarea><br />
+        <button class="mainColor" type="submit" asp-area="" asp-controller="Home" asp-action="Create">Создать</button>
     </form>
 </div>

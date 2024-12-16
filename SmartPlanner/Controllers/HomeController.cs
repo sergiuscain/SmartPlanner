@@ -27,7 +27,13 @@ namespace SmartPlanner.Controllers
         public async Task<IActionResult> DeleteAsync(Guid id)
         {
             await _storage.DeleteAsync(id);
+            return RedirectToAction("Index");
+        }
 
+        public async Task<IActionResult> Create(NoteViewModel note)
+        {
+            var noteDb = note.ToDbModel();
+            await _storage.AddAsync(noteDb);
             return RedirectToAction("Index");
         }
 
