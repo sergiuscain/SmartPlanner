@@ -45,5 +45,10 @@ namespace SmartPlanner.Services
             }
             return false;
         }
+
+        public async Task<List<Note>> GetAllTestMethodAsync()
+        {
+            return await _context.Notes.ToListAsync();
+        }
     }
 }
