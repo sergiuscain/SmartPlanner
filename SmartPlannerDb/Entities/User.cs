@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace SmartPlanner.Data.Entities
+namespace SmartPlannerDb.Model
 {
     public class User : IdentityUser
     {

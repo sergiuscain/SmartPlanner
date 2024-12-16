@@ -1,14 +1,12 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using SmartPlanner.Data.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using SmartPlannerDb.Model;
+using SmartPlannerDb;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SmartPlannerDb
 {
     public class IdentityContext : IdentityDbContext<User>
     {
-        public IdentityContext() : base() {}
-        public static IdentityDbContext Create()
-        {
-            return new IdentityDbContext();
-        }
+        
     }
 }

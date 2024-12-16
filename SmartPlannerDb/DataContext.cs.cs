@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SmartPlanner.Data.Entities;
+using SmartPlannerDb.Model;
 
 namespace SmartPlannerDb
 {

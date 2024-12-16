@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SmartPlanner.Data;
-using SmartPlanner.Data.Entities;
+using SmartPlannerDb;
+using SmartPlannerDb.Model;
 using SmartPlannerDb;
 
 namespace SmartPlanner.Services
