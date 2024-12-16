@@ -18,7 +18,7 @@ namespace SmartPlanner.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var notes = _storage.GetAllTestMethodAsync();
+            var notes = await _storage.GetAllTestMethodAsync();
             return View(notes);
         }
 
