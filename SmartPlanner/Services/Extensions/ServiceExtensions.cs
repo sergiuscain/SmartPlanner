@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using SmartPlanner.Data;
+using SmartPlannerDb.Model;
+using SmartPlanner;
+using SmartPlannerDb;
 
 namespace SmartPlanner.Services.Extensions
 {

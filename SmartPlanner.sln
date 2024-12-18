@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35208.52
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPlanner", "SmartPlanner\SmartPlanner.csproj", "{7651FA5F-1E11-40FD-AB08-B41738A5C1BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartPlannerDb", "SmartPlannerDb\SmartPlannerDb.csproj", "{BAF9A3BE-454E-4BBB-9EBA-EA75C55CF974}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7651FA5F-1E11-40FD-AB08-B41738A5C1BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7651FA5F-1E11-40FD-AB08-B41738A5C1BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7651FA5F-1E11-40FD-AB08-B41738A5C1BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAF9A3BE-454E-4BBB-9EBA-EA75C55CF974}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAF9A3BE-454E-4BBB-9EBA-EA75C55CF974}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAF9A3BE-454E-4BBB-9EBA-EA75C55CF974}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAF9A3BE-454E-4BBB-9EBA-EA75C55CF974}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

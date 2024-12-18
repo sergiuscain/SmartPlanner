@@ -1,4 +1,4 @@
-﻿using SmartPlanner.Data.Entities;
+﻿using SmartPlannerDb.Model;
 
 namespace SmartPlanner.Services
 {

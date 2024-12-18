@@ -1,25 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="Docs\**" />
-    <Compile Remove="Tests\**" />
-    <Content Remove="Docs\**" />
-    <Content Remove="Tests\**" />
-    <EmbeddedResource Remove="Docs\**" />
-    <EmbeddedResource Remove="Tests\**" />
-    <None Remove="Docs\**" />
-    <None Remove="Tests\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\css\MainStyles.css" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.4" />
@@ -35,10 +20,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\SmartPlannerDb\SmartPlannerDb.csproj" />
   </ItemGroup>
 
 </Project>

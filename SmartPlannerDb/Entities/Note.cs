@@ -1,4 +1,4 @@
-﻿namespace SmartPlanner.Data.Entities
+﻿namespace SmartPlannerDb.Model
 {
     public class Note
     {
