@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using SmartPlannerDb.Model;
 
 namespace SmartPlannerDb
@@ -9,7 +10,7 @@ namespace SmartPlannerDb
 
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
-            Database.Migrate();
+            Database.EnsureCreated();
         }
     }
 }

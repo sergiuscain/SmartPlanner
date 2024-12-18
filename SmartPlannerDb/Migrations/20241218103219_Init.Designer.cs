@@ -5,15 +5,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SmartPlannerDb.Model;
 using SmartPlannerDb;
 
 #nullable disable
 
-namespace SmartPlanner.Migrations
+namespace SmartPlannerDb.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20241216115540_Init")]
+    [Migration("20241218103219_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -21,12 +20,12 @@ namespace SmartPlanner.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("ProductVersion", "9.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("SmartPlanner.Data.Entities.Note", b =>
+            modelBuilder.Entity("SmartPlannerDb.Model.Note", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -39,9 +38,6 @@ namespace SmartPlanner.Migrations
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
