@@ -3,7 +3,7 @@ using SmartPlannerDb;
 using SmartPlannerDb.Model;
 using SmartPlannerDb;
 
-namespace SmartPlanner.Services
+namespace SmartPlannerDb
 {
     public class NotesStorage : INotesStorage
     {
@@ -15,9 +15,9 @@ namespace SmartPlanner.Services
 
         public async Task<List<Note>> GetAllByUserIdAsync(Guid userId)
         {
-            var notes = await _context.Notes.Where(n => n.UserId == userId).ToListAsync();
-            if (notes != null)
-                return notes;
+            //var notes = await _context.Notes.Where(n => n.UserId == userId).ToListAsync();
+            //if (notes != null)
+            //    return notes;
             return null;
         }
         public async Task<Note> GetByIdAsync(Guid id)
@@ -26,7 +26,6 @@ namespace SmartPlanner.Services
         }
         public async Task<Note> AddAsync(Note note)
         {
-            note.Id = Guid.NewGuid();
             await _context.Notes.AddAsync(note);
             await _context.SaveChangesAsync();
             return note;

@@ -13,7 +13,7 @@ namespace SmartPlanner.TestData
             Id = new Guid(),
             Title = $"Title for test",
             Description = $"Description for test",
-            UserId = UserId
+            //UserId = UserId
         };
         static DataForTesting()
         {
@@ -24,7 +24,7 @@ namespace SmartPlanner.TestData
                     Id = new Guid(),
                     Title = $"Title {i}",
                     Description = $"Description {i}",
-                    UserId = UserId
+                    //UserId = UserId
                 });
             }
         }

@@ -4,6 +4,7 @@ using SmartPlanner.Services;
 using SmartPlanner.TestData;
 using System.Diagnostics;
 using SmartPlanner.Helpers;
+using SmartPlannerDb;
 
 namespace SmartPlanner.Controllers
 {
