@@ -1,10 +1,13 @@
+using Microsoft.AspNetCore.Identity;
 using SmartPlanner.Services.Extensions;
+using SmartPlannerDb;
+using SmartPlannerDb.Entities;
 
 namespace SmartPlanner
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static  void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +16,13 @@ namespace SmartPlanner
 
             var app = builder.Build();
 
+            using(var serciceScope = app.Services.CreateScope())
+            {
+                var sercive = serciceScope.ServiceProvider;
+                var userManager = sercive.GetRequiredService<UserManager<User>>();
+                var roleManager = sercive.GetRequiredService<RoleManager<IdentityRole>>();
+                IdentityInitializer.Initialize(userManager, roleManager);
+            }
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
@@ -26,6 +36,7 @@ namespace SmartPlanner
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
