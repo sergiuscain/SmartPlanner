@@ -5,17 +5,23 @@ using SmartPlanner.TestData;
 using System.Diagnostics;
 using SmartPlanner.Helpers;
 using SmartPlannerDb;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using SmartPlannerDb.Entities;
 
 namespace SmartPlanner.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
         private readonly INotesStorage _storage;
-        public HomeController(ILogger<HomeController> logger, INotesStorage storage)
+        private readonly UserManager<User> _userManager;
+        public HomeController(ILogger<HomeController> logger, INotesStorage storage, UserManager<User> userManager)
         {
             _logger = logger;
             _storage = storage;
+            _userManager = userManager;
         }
 
         public async Task<IActionResult> IndexAsync()
@@ -33,7 +39,9 @@ namespace SmartPlanner.Controllers
 
         public async Task<IActionResult> Create(NoteViewModel note)
         {
+            var currentUser = this.User;
             var noteDb = note.ToDbModel();
+            noteDb.UserId = _userManager.GetUserId(currentUser);
             await _storage.AddAsync(noteDb);
             return RedirectToAction("Index");
         }

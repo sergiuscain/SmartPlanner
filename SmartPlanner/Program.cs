@@ -26,7 +26,8 @@ namespace SmartPlanner
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication(); // Включение аутентификации
+            app.UseAuthorization(); // Включение авторизации
 
             app.MapControllerRoute(
                 name: "default",
