@@ -12,7 +12,7 @@ namespace SmartPlannerDb
 
         public DataContext(DbContextOptions<DataContext> options) : base(options) 
         {
-            Database.EnsureCreated();
+            Database.Migrate();
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
