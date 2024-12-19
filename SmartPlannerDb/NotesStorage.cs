@@ -22,7 +22,7 @@ namespace SmartPlannerDb
         }
         public async Task<Note> GetByIdAsync(Guid id)
         {
-            return await _context.Notes.FirstOrDefaultAsync(n => n.Id == id);
+            return await _context.Notes.FirstOrDefaultAsync(n => n.NoteId == id);
         }
         public async Task<Note> AddAsync(Note note)
         {
@@ -37,7 +37,7 @@ namespace SmartPlannerDb
         }
         public async Task<bool> DeleteAsync(Guid id)
         {
-            var note = await _context.Notes.FirstOrDefaultAsync(n => n.Id == id);
+            var note = await _context.Notes.FirstOrDefaultAsync(n => n.NoteId == id);
             if (note != null)
             {
                 _context.Notes.Remove(note);

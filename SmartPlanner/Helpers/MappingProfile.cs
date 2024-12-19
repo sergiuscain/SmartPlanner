@@ -9,7 +9,7 @@ namespace SmartPlanner.Helpers
         {
             return new NoteViewModel
             {
-                Id = note.Id,
+                NoteId = note.NoteId,
                 Description = note.Description,
                 Title = note.Title,
                 //UserId = note.UserId,
@@ -23,10 +23,10 @@ namespace SmartPlanner.Helpers
         {
             return new Note
             {
-                Id = note.Id,
+                NoteId = note.NoteId,
                 Description = note.Description,
                 Title = note.Title,
-                //UserId = note.UserId,
+                UserId = note.UserId,
             };
         }
         public static List<Note> ToDbModel(this List<NoteViewModel> notes)
