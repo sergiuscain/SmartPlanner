@@ -26,7 +26,8 @@ namespace SmartPlanner.Controllers
 
         public async Task<IActionResult> IndexAsync()
         {
-            var notes = await _storage.GetAllTestMethodAsync();
+            var userId = _userManager.GetUserId(User);
+            var notes = await _storage.GetAllByUserIdAsync(userId);
             var notesVm = notes.ToViewModel();
             return View(notesVm);
         }
@@ -56,7 +57,7 @@ namespace SmartPlanner.Controllers
         {
             var noteDb = note.ToDbModel();
             await _storage.UpdateAsync(noteDb);
-            return RedirectToAction("Note", note);
+            return RedirectToAction("Index");
         }
         public IActionResult Privacy()
         {

@@ -1,0 +1,28 @@
+﻿@model LoginViewModel
+<div class="col text-center">
+    <h2>Вход:</h2>
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="UserName">Email</label><br/>
+            <input asp-for="UserName" inputBlock" />
+            <span asp-validation-for="UserName" class="text-danger" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password">Пароль</label><br />
+            <input asp-for="Password" inputBlock" />
+            <span asp-validation-for="Password" class="text-danger" />
+        </div>
+
+        <div>
+            <label asp-for="IsRememberMe">Запомнить меня</label>
+            <input asp-for="IsRememberMe" value="true" />
+        </div>
+
+        <button type="submit" class="mainColor" asp-area="" asp-controller="Account" asp-action="Login">Войти</button>
+    </form>
+    <br />
+    <a asp-area="" asp-controller="Account" asp-action="Register">Или зарегестрироваться</a>
+</div>  

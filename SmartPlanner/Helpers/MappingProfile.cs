@@ -12,7 +12,7 @@ namespace SmartPlanner.Helpers
                 NoteId = note.NoteId,
                 Description = note.Description,
                 Title = note.Title,
-                //UserId = note.UserId,
+                UserId = note.UserId,
             };
         }
         public static List<NoteViewModel> ToViewModel(this List<Note> notes)

@@ -13,11 +13,11 @@ namespace SmartPlannerDb
             _context = context;
         }
 
-        public async Task<List<Note>> GetAllByUserIdAsync(Guid userId)
+        public async Task<List<Note>> GetAllByUserIdAsync(string userId)
         {
-            //var notes = await _context.Notes.Where(n => n.UserId == userId).ToListAsync();
-            //if (notes != null)
-            //    return notes;
+            var notes = await _context.Notes.Where(n => n.UserId == userId).ToListAsync();
+            if (notes != null)
+                return notes;
             return null;
         }
         public async Task<Note> GetByIdAsync(Guid id)
