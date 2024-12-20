@@ -27,7 +27,7 @@ namespace SmartPlanner.Controllers
         public async Task<IActionResult> IndexAsync()
         {
             var userId = _userManager.GetUserId(User);
-            var notes = await _storage.GetAllByUserIdAsync(userId);
+            var notes = await _storage.GetAllAsync(userId);
             var notesVm = notes.ToViewModel();
             return View(notesVm);
         }

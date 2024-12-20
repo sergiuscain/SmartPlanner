@@ -13,7 +13,7 @@ namespace SmartPlannerDb
             _context = context;
         }
 
-        public async Task<List<Note>> GetAllByUserIdAsync(string userId)
+        public async Task<List<Note>> GetAllAsync(string userId)
         {
             var notes = await _context.Notes.Where(n => n.UserId == userId).ToListAsync();
             if (notes != null)
