@@ -11,5 +11,6 @@ namespace SmartPlannerDb.Entities
     public class User : IdentityUser 
     {
         public ICollection<Note> Notes { get; set; }
+        public ICollection<TaskModel> Tasks { get; set; }
     }
 }

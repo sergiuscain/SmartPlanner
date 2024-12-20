@@ -9,6 +9,7 @@ namespace SmartPlannerDb
     public class DataContext : IdentityDbContext<User>
     {
         public DbSet<Note> Notes { get; set; }
+        public DbSet<TaskModel> Tasks { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options) 
         {
@@ -21,6 +22,11 @@ namespace SmartPlannerDb
                 .HasOne(n => n.User)
                 .WithMany(u => u.Notes)
                 .HasForeignKey(n => n.UserId);
+
+            modelBuilder.Entity<TaskModel>()
+                .HasOne(t => t.User)
+                .WithMany(u => u.Tasks)
+                .HasForeignKey(t => t.UserId);
         }
     }
 }
