@@ -44,6 +44,11 @@ body {
     border-radius: 5%;
 }
 
+/* При наведении на карточку - меняем цвет тени */
+.cardParam:hover {
+    box-shadow: 4px 8px 16px rgba(255, 102, 51, 0.2);
+}
+
 .inputBlock{
   background-color: rgb(140, 152, 221);
   color: rgb(233, 245, 255);
