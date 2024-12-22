@@ -28,6 +28,19 @@ namespace SmartPlannerDb
             await _context.Tasks.AddAsync(task);
             await _context.SaveChangesAsync();
         }
+        public async Task<List<TaskModel>> GetByStatusAsync(string userId, string status)
+        {
+            return await _context.Tasks.Where(t => t.UserId == userId && t.Status == status).ToListAsync();
+        }
+        public async Task EditStatusAsync(Guid taskId, string newStatus)
+        {
+            var task = await _context.Tasks.FirstOrDefaultAsync(t => t.TaskModelId == taskId);
+            if (task != null)
+            {
+                task.Status = newStatus;
+                await _context.SaveChangesAsync();
+            }
+        }
         public async Task UpdateAsync(TaskModel task)
         {
             _context.Update(task);

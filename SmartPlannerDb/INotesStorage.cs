@@ -1,4 +1,4 @@
-﻿using SmartPlannerDb.Model;
+﻿using SmartPlannerDb.Entities;
 
 namespace SmartPlannerDb;
 

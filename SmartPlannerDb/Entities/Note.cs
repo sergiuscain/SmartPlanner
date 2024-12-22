@@ -1,6 +1,4 @@
-﻿using SmartPlannerDb.Entities;
-
-namespace SmartPlannerDb.Model
+﻿namespace SmartPlannerDb.Entities
 {
     public class Note
     {

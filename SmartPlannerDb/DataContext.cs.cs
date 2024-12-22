@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using SmartPlannerDb.Entities;
-using SmartPlannerDb.Model;
 
 namespace SmartPlannerDb
 {

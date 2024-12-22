@@ -1,6 +1,5 @@
-﻿using System;
-using SmartPlannerDb.Model;
-using SmartPlanner.Models;
+﻿using SmartPlanner.Models;
+using SmartPlannerDb.Entities;
 
 namespace SmartPlanner.TestData
 {

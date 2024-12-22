@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using SmartPlannerDb.Model;
 using SmartPlanner;
 using SmartPlannerDb;
 using SmartPlannerDb.Entities;
@@ -20,6 +18,7 @@ namespace SmartPlanner.Services.Extensions
                 .AddEntityFrameworkStores<DataContext>()
                 .AddDefaultTokenProviders();   //Добавление стандартного токена для сброса пароля/Email
             builder.Services.AddTransient<INotesStorage, NotesStorage>(); //Сервис для работы с заметками. (Хранилище заметок)
+            builder.Services.AddTransient<ITasksStorage, TasksStorage>(); //Сервис для работы с задачами
 
             //Настройка куки
             builder.Services.ConfigureApplicationCookie(options =>
