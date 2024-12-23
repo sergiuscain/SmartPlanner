@@ -1,6 +1,6 @@
 # MVC вариант приложения SmartPlanner (здесь опыта побошльше, решил реализовать так)
 ## Использованные технологии:
-asp mvc, entity framework, bootstrap, частичные представления, html, css, Di
+asp mvc, entity framework, bootstrap, частичные представления, html, css, Di, адаптивная верстка (под телефоны и под десктоп подходит)
 
 ![image](https://github.com/user-attachments/assets/f1a4aab4-6ff7-4dc7-9622-3c94eabf0e01)
 ![image](https://github.com/user-attachments/assets/eba765fb-8122-43a0-8f8b-2bb1f4db0f7a)
