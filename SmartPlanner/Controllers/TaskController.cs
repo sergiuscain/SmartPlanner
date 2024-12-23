@@ -80,7 +80,7 @@ namespace SmartPlanner.Controllers
             {
                 return View(task.ToViewModel());
             } 
-            return View(null);
+            return View("NotFound");
         }
         public IActionResult Create()
         {
@@ -109,6 +109,11 @@ namespace SmartPlanner.Controllers
             string lastStatus = await _storage.GetStatusByIdAsync(taskId);
             await _storage.EditStatusAsync(taskId, newStatus);
             return RedirectToAction(lastAction);
+        }
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            await _storage.DeleteAsync(id);
+            return RedirectToAction("Review");
         }
     }
 }
