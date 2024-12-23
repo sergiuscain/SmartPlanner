@@ -43,6 +43,15 @@ body {
     color: rgb(248, 246, 215);
     border-radius: 5%;
 }
+.taskCardParam {
+    width: 20vmax;
+    height: 25vmax;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    color: rgb(248, 246, 215);
+    border-radius: 5%;
+}
 
 /* При наведении на карточку - меняем цвет тени */
 .cardParam:hover {

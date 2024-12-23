@@ -55,5 +55,10 @@ namespace SmartPlannerDb
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task<string> GetStatusByIdAsync(Guid taskId)
+        {
+            return (await _context.Tasks.FirstOrDefaultAsync( t => t.TaskModelId == taskId))?.Status;
+        }
     }
 }

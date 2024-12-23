@@ -85,12 +85,13 @@ namespace SmartPlanner.Controllers
                 UserId = userId
             };
             await _storage.AddAsync(task);
-            return RedirectToAction("InProgress");
+            return RedirectToAction(model.Status);
         }
         public async Task<IActionResult> EditStatus(Guid taskId, string newStatus)
         {
+            string lastStatus = await _storage.GetStatusByIdAsync(taskId);
             await _storage.EditStatusAsync(taskId, newStatus);
-            return RedirectToAction(newStatus);
+            return RedirectToAction(lastStatus);
         }
     }
 }

@@ -11,5 +11,6 @@ namespace SmartPlannerDb
         Task EditStatusAsync(Guid taskId, string newStatus);
         Task<TaskModel> GetByIdAsync(Guid id);
         Task UpdateAsync(TaskModel task);
+        Task<string> GetStatusByIdAsync(Guid taskId);
     }
 }
