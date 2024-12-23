@@ -44,8 +44,8 @@ body {
     border-radius: 5%;
 }
 .taskCardParam {
-    width: 20vmax;
-    height: 25vmax;
+    width: 10vmax;
+    height: 7vmax;
     overflow: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -78,4 +78,10 @@ body {
 }
 #createTaskButtonA {
     color: antiquewhite;
+}
+.notesBlock {
+    border-color:gold;
+    border-width: 1px;
+    border-style: solid;
+    padding: 10px;
 }

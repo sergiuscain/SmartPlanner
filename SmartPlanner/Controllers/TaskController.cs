@@ -59,12 +59,19 @@ namespace SmartPlanner.Controllers
             var tasksVM = tasks.ToViewModel();
             return View("Index", tasksVM);
         }
-        public async Task<IActionResult> Canceled() //Index ведёт на вкладку "Отменено"
+        public async Task<IActionResult> Canceled() //Canceled ведёт на вкладку "Отменено"
         {
             var userId = _userManager.GetUserId(User);
             var tasks = await _storage.GetByStatusAsync(userId, Status.Canceled.ToString());
             var tasksVM = tasks.ToViewModel();
             return View("Index", tasksVM);
+        }
+            public async Task<IActionResult> Review() //Review ведёт на вкладку, где все статусы на одной странице
+        {
+            var userId = _userManager.GetUserId(User);
+            var tasks = await _storage.GetAllAsync(userId);
+            var tasksVM = tasks.ToViewModel();
+            return View("Review", tasksVM);
         }
         public IActionResult Create()
         {
@@ -89,9 +96,10 @@ namespace SmartPlanner.Controllers
         }
         public async Task<IActionResult> EditStatus(Guid taskId, string newStatus)
         {
+            var lastAction = Request.Headers["Referer"].ToString().Split('/').Last();
             string lastStatus = await _storage.GetStatusByIdAsync(taskId);
             await _storage.EditStatusAsync(taskId, newStatus);
-            return RedirectToAction(lastStatus);
+            return RedirectToAction(lastAction);
         }
     }
 }

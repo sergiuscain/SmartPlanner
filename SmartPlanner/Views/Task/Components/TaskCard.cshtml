@@ -15,14 +15,12 @@
 }
 
 <div class="col-4 m-1  taskCardParam @cardClass">
-    <div class="card-body d-flex flex-column">
+    <div class="card-body d-flex flex-column ">
         <a asp-area="" asp-controller="Task" asp-action="task" asp-route-id="@Model.TaskModelId"><h5 class="card-title">@Model.Title</h5></a>
         <hr />
-        <p class="card-text">@Model.Description</p>
-
         <div class="dropdown">  @*  Смена статуса *@
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <p>Сменить статус</p>
+                <i></i>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" asp-area="" asp-controller="Task" asp-action="EditStatus" asp-route-newStatus="Pending" asp-route-taskId="@Model.TaskModelId">В ожидании</a></li>
