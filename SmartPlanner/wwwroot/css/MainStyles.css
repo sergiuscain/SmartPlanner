@@ -45,7 +45,7 @@ body {
 }
 .taskCardParam {
     width: 10vmax;
-    height: 7vmax;
+    height: 10vmax;
     overflow: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;

@@ -73,6 +73,15 @@ namespace SmartPlanner.Controllers
             var tasksVM = tasks.ToViewModel();
             return View("Review", tasksVM);
         }
+        public async Task<IActionResult> Task(Guid id)
+        {
+            var task = await _storage.GetByIdAsync(id);
+            if (task != null)
+            {
+                return View(task.ToViewModel());
+            } 
+            return View(null);
+        }
         public IActionResult Create()
         {
             return View();
