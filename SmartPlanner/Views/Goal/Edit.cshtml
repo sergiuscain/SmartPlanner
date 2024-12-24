@@ -1,0 +1,39 @@
+﻿@model GoalViewModel
+
+<h2>Изменение цели</h2>
+
+<div class="container">
+    <form asp-action="Editing" method="post">
+        <div class="form-group">
+            <label asp-for="Description" class="control-label"></label>
+            <input asp-for="Description" value="@Model.Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CurrentProgress" class="control-label"></label>
+            <input asp-for="CurrentProgress" value="@Model.CurrentProgress" class="form-control" type="number" min="0" />
+            <span asp-validation-for="CurrentProgress" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="TotalProgress" class="control-label"></label>
+            <input asp-for="TotalProgress" value="@Model.TotalProgress" class="form-control" type="number" min="1" /><br/>
+            <span asp-validation-for="TotalProgress" class="text-danger"></span>
+        </div>
+
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="UserId" />
+
+        <div class="form-group">
+            <input type="submit" value="Сохранить" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

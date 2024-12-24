@@ -20,7 +20,7 @@ namespace SmartPlannerDb
             _context.Goals.Add(goal);
             await _context.SaveChangesAsync();
         }
-        public async Task Delete(Guid id)
+        public async Task DeleteAsync(Guid id)
         {
             var goal = await _context.Goals.FirstOrDefaultAsync(x => x.Id == id);
             if (goal != null)
@@ -34,15 +34,24 @@ namespace SmartPlannerDb
             var goals = _context.Goals.Where(x => x.UserId == userId);
             return await goals.ToListAsync();
         }
-        public async Task<Goal> GetById(Guid id)
+        public async Task<Goal> GetByIdAsync(Guid id)
         {
             return await _context.Goals.FirstOrDefaultAsync(g => g.Id == id);
         }
-        public async Task AddPoints(Guid goalId, int point)
+        public async Task AddPointsAsync(Guid goalId, int point)
         {
-            var goal = await GetById(goalId);
+            var goal = await GetByIdAsync(goalId);
             goal.CurrentProgress += point;
             await _context.SaveChangesAsync();
+        }
+
+        public async Task EditAsync(Goal goal)
+        {
+            if (goal != null)
+            {
+                _context.Update(goal);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

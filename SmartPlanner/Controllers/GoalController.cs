@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SmartPlanner.Helpers;
+using SmartPlanner.Models;
 using SmartPlannerDb;
 using SmartPlannerDb.Entities;
 
@@ -26,12 +27,6 @@ namespace SmartPlanner.Controllers
             return View(goalsVM);
         }
 
-        // GET: GoalController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: GoalController/Create
         public ActionResult Create()
         {
@@ -54,45 +49,19 @@ namespace SmartPlanner.Controllers
         }
 
         // GET: GoalController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(GoalViewModel goal)
         {
-            return View();
+            return View(goal);
         }
 
         // POST: GoalController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Editing(GoalViewModel goal)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: GoalController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: GoalController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var goalDb = goal.ToDbModel();
+            await _storage.EditAsync(goalDb);
+            return RedirectToAction("Index");
         }
         public async Task<IActionResult> CreateTest()
         {
@@ -107,6 +76,16 @@ namespace SmartPlanner.Controllers
                 UserId = userId,
             };
             await _storage.AddAsync(testGoal);
+            return RedirectToAction("Index");
+        }
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            await _storage.DeleteAsync(id);
+            return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> AddPoints(Guid id, int points)
+        {
+            await _storage.AddPointsAsync(id, points);
             return RedirectToAction("Index");
         }
     }
