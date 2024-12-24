@@ -13,14 +13,19 @@ namespace SmartPlannerDb
 
         public async Task<List<Note>> GetAllAsync(string userId)
         {
-            var notes = await _context.Notes.Where(n => n.UserId == userId).ToListAsync();
+            var notes = await _context.Notes
+                .AsNoTracking()
+                .Where(n => n.UserId == userId)
+                .ToListAsync();
             if (notes != null)
                 return notes;
             return null;
         }
         public async Task<Note> GetByIdAsync(Guid id)
         {
-            return await _context.Notes.FirstOrDefaultAsync(n => n.NoteId == id);
+            return await _context.Notes
+                .AsNoTracking()
+                .FirstOrDefaultAsync(n => n.NoteId == id);
         }
         public async Task<Note> AddAsync(Note note)
         {
@@ -47,7 +52,9 @@ namespace SmartPlannerDb
 
         public async Task<List<Note>> GetAllTestMethodAsync()
         {
-            return await _context.Notes.ToListAsync();
+            return await _context.Notes
+                .AsNoTracking()
+                .ToListAsync();
         }
     }
 }

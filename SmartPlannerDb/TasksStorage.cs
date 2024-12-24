@@ -17,11 +17,15 @@ namespace SmartPlannerDb
         }
         public async Task<List<TaskModel>> GetAllAsync(string userId)
         {
-            return await _context.Tasks.Where(t => t.UserId == userId).ToListAsync();
+            return await _context.Tasks
+                .AsNoTracking()
+                .Where(t => t.UserId == userId).ToListAsync();
         }
         public async Task<TaskModel> GetByIdAsync(Guid id)
         {
-            return await _context.Tasks.FirstOrDefaultAsync(t => t.TaskModelId == id);
+            return await _context.Tasks
+                .AsNoTracking()
+                .FirstOrDefaultAsync(t => t.TaskModelId == id);
         }
         public async Task AddAsync(TaskModel task)
         {
@@ -30,7 +34,10 @@ namespace SmartPlannerDb
         }
         public async Task<List<TaskModel>> GetByStatusAsync(string userId, string status)
         {
-            return await _context.Tasks.Where(t => t.UserId == userId && t.Status == status).ToListAsync();
+            return await _context.Tasks
+                .AsNoTracking()
+                .Where(t => t.UserId == userId && t.Status == status)
+                .ToListAsync();
         }
         public async Task EditStatusAsync(Guid taskId, string newStatus)
         {
@@ -58,7 +65,10 @@ namespace SmartPlannerDb
 
         public async Task<string> GetStatusByIdAsync(Guid taskId)
         {
-            return (await _context.Tasks.FirstOrDefaultAsync( t => t.TaskModelId == taskId))?.Status;
+            return (await _context.Tasks
+                .AsNoTracking()
+                .FirstOrDefaultAsync( t => t.TaskModelId == taskId))?
+                .Status;
         }
     }
 }

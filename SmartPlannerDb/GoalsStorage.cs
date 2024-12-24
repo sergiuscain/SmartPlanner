@@ -31,12 +31,16 @@ namespace SmartPlannerDb
         }
         public async Task<List<Goal>> GetAllAsync(string userId)
         {
-            var goals = _context.Goals.Where(x => x.UserId == userId);
+            var goals = _context.Goals
+                .AsNoTracking()
+                .Where(x => x.UserId == userId);
             return await goals.ToListAsync();
         }
         public async Task<Goal> GetByIdAsync(Guid id)
         {
-            return await _context.Goals.FirstOrDefaultAsync(g => g.Id == id);
+            return await _context.Goals
+                .AsNoTracking()
+                .FirstOrDefaultAsync(g => g.Id == id);
         }
         public async Task AddPointsAsync(Guid goalId, int point)
         {
