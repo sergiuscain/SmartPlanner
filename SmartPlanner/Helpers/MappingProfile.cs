@@ -71,5 +71,35 @@ namespace SmartPlanner.Helpers
         {
             return tasks.Select(t => t.ToDbModel()).ToList();
         }
+        public static GoalViewModel ToViewModel(this Goal goal)
+        {
+            return new GoalViewModel
+            {
+                Id = goal.Id,
+                Description = goal.Description,
+                CurrentProgress = goal.CurrentProgress,
+                TotalProgress = goal.TotalProgress,
+                UserId = goal.UserId,
+            };
+        }
+        public static List<GoalViewModel> ToViewModel(this List<Goal> goals)
+        {
+            return goals.Select(t => t.ToViewModel()).ToList();
+        }
+        public static Goal ToDbModel(this GoalViewModel goal)
+        {
+            return new Goal
+            {
+                Id = goal.Id,
+                Description = goal.Description,
+                CurrentProgress = goal.CurrentProgress,
+                TotalProgress = goal.TotalProgress,
+                UserId = goal.UserId,
+            };
+        }
+        public static List<Goal> ToDbModel(this List<GoalViewModel> goals)
+        {
+            return goals.Select(g => g.ToDbModel()).ToList();
+        }
     }
 }
