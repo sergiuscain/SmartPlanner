@@ -1,0 +1,45 @@
+﻿@model List<GoalViewModel>
+
+@{
+    ViewBag.Title = "Список целей";
+}
+
+@{
+    ViewBag.Title = "Список целей";
+}
+
+<h2>Список целей</h2>
+
+<div class="container">
+    <div class="row">
+        @foreach (var goal in Model)
+        {
+            <div class="col-md-12 mb-4">
+                <div class="card goalCard">
+                    <div class="card-body">
+                        <p class="card-text">@goal.Description</p>
+                        <div class="progress mb-3 bg-warning">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: @((goal.CurrentProgress * 100) / goal.TotalProgress)%;"
+                                 aria-valuenow="@goal.CurrentProgress" aria-valuemin="0" aria-valuemax="@goal.TotalProgress">
+                                @goal.CurrentProgress / @goal.TotalProgress
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-success btn-secondary dropdown-toggle" type="button" id="actionMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Действия
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="actionMenuButton">
+                                <a class="dropdown-item" href="@Url.Action("Edit", "Goals", new { id = goal.Id })">Изменить цель</a>
+                                <a class="dropdown-item" href="@Url.Action("Delete", "Goals", new { id = goal.Id })">Удалить цель</a>
+                                <form action="@Url.Action("AddPoints", "Goals", new { id = goal.Id })" method="post" class="d-inline">
+                                    <input type="number" name="points" placeholder="Добавить поинты" min="1" required class="form-control d-inline" style="width: auto; display: inline-block;" />
+                                    <button type="submit" class="btn btn-primary">Добавить</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
