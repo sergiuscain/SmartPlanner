@@ -10,4 +10,5 @@ public interface INotesStorage
     Task<List<Note>> GetAllTestMethodAsync();
     Task<Note> GetByIdAsync(Guid id);
     Task UpdateAsync(Note note);
+    Task<List<Note>> GetByPageAsync(string userId, int pageSize, int page);
 }

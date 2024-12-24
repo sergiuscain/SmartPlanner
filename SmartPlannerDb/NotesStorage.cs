@@ -56,5 +56,10 @@ namespace SmartPlannerDb
                 .AsNoTracking()
                 .ToListAsync();
         }
+        public async Task<List<Note>> GetByPageAsync(string userId,  int pageSize, int page)
+        {
+            var notes = await _context.Notes.AsNoTracking().Where(n => n.UserId == userId).Skip((page-1)*pageSize).Take(pageSize).ToListAsync();
+            return notes;
+        }
     }
 }

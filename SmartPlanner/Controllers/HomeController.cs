@@ -27,9 +27,16 @@ namespace SmartPlanner.Controllers
         public async Task<IActionResult> IndexAsync()
         {
             var userId = _userManager.GetUserId(User);
-            var notes = await _storage.GetAllAsync(userId);
+            var notes = await _storage.GetByPageAsync(userId, 8, 1);
             var notesVm = notes.ToViewModel();
             return View(notesVm);
+        }
+        public async Task<IActionResult> Page(int page)
+        {
+            var userId = _userManager.GetUserId(User);
+            var notes = await _storage.GetByPageAsync(userId, 8, page);
+            var notesVm = notes.ToViewModel();
+            return View("Index", notesVm);
         }
 
         public async Task<IActionResult> DeleteAsync(Guid id)
@@ -44,6 +51,22 @@ namespace SmartPlanner.Controllers
             var noteDb = note.ToDbModel();
             noteDb.UserId = _userManager.GetUserId(currentUser);
             await _storage.AddAsync(noteDb);
+            return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> CreateTest()
+        {
+            var currentUser = _userManager.GetUserId(User);
+            for (int i = 0; i < 8; i++)
+            {
+                var note = new Note
+                {
+                    Description = $"Описание заметки N{i}",
+                    Title = $"Заголовок заметки N1{i}",
+                    UserId = currentUser,
+                };
+                await _storage.AddAsync(note);
+            }
+
             return RedirectToAction("Index");
         }
 
