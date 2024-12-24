@@ -17,8 +17,8 @@ namespace SmartPlanner.Services.Extensions
             builder.Services.AddIdentity<User, IdentityRole>()  //Добавление Identity 
                 .AddEntityFrameworkStores<DataContext>()
                 .AddDefaultTokenProviders();   //Добавление стандартного токена для сброса пароля/Email
-            builder.Services.AddTransient<INotesStorage, NotesStorage>(); //Сервис для работы с заметками. (Хранилище заметок)
-            builder.Services.AddTransient<ITasksStorage, TasksStorage>(); //Сервис для работы с задачами
+            builder.Services.AddScoped<INotesStorage, NotesStorage>(); //Сервис для работы с заметками. (Хранилище заметок)
+            builder.Services.AddScoped<ITasksStorage, TasksStorage>(); //Сервис для работы с задачами
 
             //Настройка куки
             builder.Services.ConfigureApplicationCookie(options =>

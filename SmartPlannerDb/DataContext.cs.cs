@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Logging;
 using SmartPlannerDb.Entities;
 
@@ -9,8 +10,9 @@ namespace SmartPlannerDb
     {
         public DbSet<Note> Notes { get; set; }
         public DbSet<TaskModel> Tasks { get; set; }
+        public DbSet<Goal> Goals { get; set; }
 
-        public DataContext(DbContextOptions<DataContext> options) : base(options) 
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
             Database.Migrate();
         }
@@ -26,6 +28,12 @@ namespace SmartPlannerDb
                 .HasOne(t => t.User)
                 .WithMany(u => u.Tasks)
                 .HasForeignKey(t => t.UserId);
+
+            modelBuilder.Entity<Goal>()
+                .HasOne(g => g.User)
+                .WithMany(u => u.Goals)
+                .HasForeignKey(g => g.UserId);
         }
+        
     }
 }
