@@ -16,6 +16,7 @@ namespace SmartPlannerDb.Entities
         public string Priority { get; set; }
         public DateTime DateOfCreation { get; set; }
         public DateTime Deadline { get; set; }
+        public List<SubTask> SubTasks { get; set; }
 
         //Навигационные свойства:
         public User User { get; set; }

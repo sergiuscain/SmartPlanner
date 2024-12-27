@@ -11,6 +11,7 @@ namespace SmartPlannerDb
         public DbSet<Note> Notes { get; set; }
         public DbSet<TaskModel> Tasks { get; set; }
         public DbSet<Goal> Goals { get; set; }
+        public DbSet<SubTask> SubTasks { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
@@ -33,6 +34,11 @@ namespace SmartPlannerDb
                 .HasOne(g => g.User)
                 .WithMany(u => u.Goals)
                 .HasForeignKey(g => g.UserId);
+
+            modelBuilder.Entity<SubTask>()
+                .HasOne(st => st.Task)
+                .WithMany(t => t.SubTasks)
+                .HasForeignKey(st => st.TaskId);
         }
         
     }
