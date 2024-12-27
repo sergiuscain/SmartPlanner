@@ -13,14 +13,6 @@
             </div>
 
             <div class="col-4 notesBlock">
-                <h5>В плане</h5>
-                @foreach (var task in Model.Where(t => t.Status == Status.Planned.ToString()))
-                {
-                    @await Html.PartialAsync("/Views/Task/Components/TaskCard.cshtml", task)
-                }
-            </div>
-
-            <div class="col-4 notesBlock">
                 <h5>В работе</h5>
                 @foreach (var task in Model.Where(t => t.Status == Status.InProgress.ToString()))
                 {
@@ -39,22 +31,6 @@
             <div class="col-4 notesBlock">
                 <h5>Выполнено</h5>
                 @foreach (var task in Model.Where(t => t.Status == Status.Done.ToString()))
-                {
-                    @await Html.PartialAsync("/Views/Task/Components/TaskCard.cshtml", task)
-                }
-            </div>
-
-            <div class="col-4 notesBlock">
-                <h5>Отложена</h5>
-                @foreach (var task in Model.Where(t => t.Status == Status.Postponed.ToString()))
-                {
-                    @await Html.PartialAsync("/Views/Task/Components/TaskCard.cshtml", task)
-                }
-            </div>
-
-            <div class="col-4 notesBlock">
-                <h5>Отменена</h5>
-                @foreach (var task in Model.Where(t => t.Status == Status.Canceled.ToString()))
                 {
                     @await Html.PartialAsync("/Views/Task/Components/TaskCard.cshtml", task)
                 }

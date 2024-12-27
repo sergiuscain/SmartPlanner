@@ -4,12 +4,9 @@
     string cardClass = Model.Status switch
     {
         "Pending" => "bg-warning",      // Ожидание
-        "Planned" => "bg-info",          // В плане
         "InProgress" => "bg-primary",    // В работе
         "InTesting" => "bg-secondary",   // В тестировании
         "Done" => "bg-success",          // Выполнено
-        "Postponed" => "bg-light",       // Отложена
-        "Canceled" => "bg-danger",       // Отменена
         _ => "bg-light"                  // По умолчанию
     };
 }
@@ -25,12 +22,9 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" asp-area="" asp-controller="Task" asp-action="EditStatus" asp-route-newStatus="Pending" asp-route-taskId="@Model.TaskModelId">В ожидании</a></li>
-                <li><a class="dropdown-item" asp-area="" asp-controller="Task" asp-action="EditStatus" asp-route-newStatus="Planned" asp-route-taskId="@Model.TaskModelId">В плане</a></li>
                 <li><a class="dropdown-item" asp-area="" asp-controller="Task" asp-action="EditStatus" asp-route-newStatus="InProgress" asp-route-taskId="@Model.TaskModelId">В работе</a></li>
                 <li><a class="dropdown-item" asp-area="" asp-controller="Task" asp-action="EditStatus" asp-route-newStatus="InTesting" asp-route-taskId="@Model.TaskModelId">В тестировании</a></li>
                 <li><a class="dropdown-item" asp-area="" asp-controller="Task" asp-action="EditStatus" asp-route-newStatus="Done" asp-route-taskId="@Model.TaskModelId">Выполнено</a></li>
-                <li><a class="dropdown-item" asp-area="" asp-controller="Task" asp-action="EditStatus" asp-route-newStatus="Postponed" asp-route-taskId="@Model.TaskModelId">Отложена</a></li>
-                <li><a class="dropdown-item" asp-area="" asp-controller="Task" asp-action="EditStatus" asp-route-newStatus="Canceled" asp-route-taskId="@Model.TaskModelId">Отменена</a></li>
             </ul>
         </div>
     </div>

@@ -31,13 +31,6 @@ namespace SmartPlanner.Controllers
             var tasksVM = tasks.ToViewModel();
             return View("Index", tasksVM);
         }
-        public async Task<IActionResult> Planned() //Planned ведёт на вкладку "В плане"
-        {
-            var userId = _userManager.GetUserId(User);
-            var tasks = await _storage.GetByStatusAsync(userId, Status.Planned.ToString());
-            var tasksVM = tasks.ToViewModel();
-            return View("Index", tasksVM);
-        }
         public async Task<IActionResult> InTesting() //InTesting ведёт на вкладку "В тестировании"
         {
             var userId = _userManager.GetUserId(User);
@@ -49,20 +42,6 @@ namespace SmartPlanner.Controllers
         {
             var userId = _userManager.GetUserId(User);
             var tasks = await _storage.GetByStatusAsync(userId, Status.Done.ToString());
-            var tasksVM = tasks.ToViewModel();
-            return View("Index", tasksVM);
-        }
-        public async Task<IActionResult> Postponed() //Postponed ведёт на вкладку "Отложено"
-        {
-            var userId = _userManager.GetUserId(User);
-            var tasks = await _storage.GetByStatusAsync(userId, Status.Postponed.ToString());
-            var tasksVM = tasks.ToViewModel();
-            return View("Index", tasksVM);
-        }
-        public async Task<IActionResult> Canceled() //Canceled ведёт на вкладку "Отменено"
-        {
-            var userId = _userManager.GetUserId(User);
-            var tasks = await _storage.GetByStatusAsync(userId, Status.Canceled.ToString());
             var tasksVM = tasks.ToViewModel();
             return View("Index", tasksVM);
         }
