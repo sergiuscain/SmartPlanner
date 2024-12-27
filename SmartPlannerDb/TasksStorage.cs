@@ -19,12 +19,14 @@ namespace SmartPlannerDb
         {
             return await _context.Tasks
                 .AsNoTracking()
+                .Include(t => t.SubTasks)
                 .Where(t => t.UserId == userId).ToListAsync();
         }
         public async Task<TaskModel> GetByIdAsync(Guid id)
         {
             return await _context.Tasks
                 .AsNoTracking()
+                .Include(t => t.SubTasks)
                 .FirstOrDefaultAsync(t => t.TaskModelId == id);
         }
         public async Task AddAsync(TaskModel task)
@@ -36,6 +38,7 @@ namespace SmartPlannerDb
         {
             return await _context.Tasks
                 .AsNoTracking()
+                .Include(t => t.SubTasks)
                 .Where(t => t.UserId == userId && t.Status == status)
                 .ToListAsync();
         }

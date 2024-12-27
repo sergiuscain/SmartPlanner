@@ -6,8 +6,21 @@
             <form method="post">
                 <p class="mainColor">Заголовок</p>
                 <input class="inputBlock" type="text" id="inputText" placeholder="Введите текст заметки" asp-for="Title" /><br />
+
                 <p class="mainColor">Описание</p>
                 <textarea class="inputBlock" width="70%" type="text" id="inputText" placeholder="Введите описание" asp-for="Description"></textarea><br />
+
+                <h3 class="mainColor">Подзадачи</h3>
+                <div id="subtask-container">
+                    <div class="subtask mainColor">
+                        <label>Название подзадачи</label><br />
+                        <input type="text" name="SubTasks[0].Title" /><br/>
+                        <label>Описание подзадачи</label><br />
+                        <input type="text" name="SubTasks[0].Description" /><br />
+                    </div>
+                </div>
+                <button type="button" id="add-subtask">Добавить подзадачу</button>
+
                 <p class="mainColor">Статус</p>
                 <select name="Status" asp-for="Status">
                     <option value="Pending">В ожидании</option>
@@ -15,6 +28,7 @@
                     <option value="InTesting">В тестировании</option>
                     <option value="Done">Выполнено</option>
                 </select><br/>
+
                 <p class="mainColor">Приоритет</p>
                 <select name="Priority" asp-for="Priority">
                     <option value="1">Приоритет 1</option>
@@ -22,6 +36,7 @@
                     <option value="3">Приоритет 3</option>
                     <option value="4">Приоритет 4</option>
                 </select><br /><br/>
+
                 <button class="mainColor" type="submit" asp-area="" asp-controller="Task" asp-action="Create">Создать</button>
             </form>
         </div>

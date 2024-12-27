@@ -69,16 +69,10 @@ namespace SmartPlanner.Controllers
         public async Task<IActionResult> Create(TaskViewModel model)
         {
             var userId = _userManager.GetUserId(this.User);
-            var task = new TaskModel
-            {
-                DateOfCreation = DateTime.Now,
-                Deadline = model.Deadline,
-                Description = model.Description,
-                Priority = model.Priority,
-                Status = model.Status,
-                Title = model.Title,
-                UserId = userId
-            };
+            model.TaskModelId = Guid.NewGuid();
+            model.UserId = userId;
+            model.DateOfCreation = DateTime.Now;
+            var task = model.ToDbModel();
             await _storage.AddAsync(task);
             return RedirectToAction(model.Status);
         }

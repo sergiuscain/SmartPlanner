@@ -33,6 +33,9 @@ body {
     border-color: blueviolet;
     border-width: 1px;
 }
+.secondСolor {
+    background-color: #1e401c;
+}
 .cardParam {
     width: 20vmax;
     height: 25vmax;
@@ -48,11 +51,8 @@ body {
     color: rgb(248, 246, 215);
 }
 .taskCardParam {
-    width: 10vmax;
-    height: 10vmax;
-    overflow: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    width: 15vmax;
+    height: 15vmax;
     color: rgb(248, 246, 215);
     border-radius: 5%;
 }

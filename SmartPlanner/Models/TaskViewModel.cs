@@ -12,6 +12,7 @@ namespace SmartPlanner.Models
         public string Priority { get; set; }
         public DateTime DateOfCreation { get; set; }
         public DateTime Deadline { get; set; }
+        public List<SubTaskViewModel> SubTasks { get; set; }
 
         //Навигационные свойства:
         public User User { get; set; }

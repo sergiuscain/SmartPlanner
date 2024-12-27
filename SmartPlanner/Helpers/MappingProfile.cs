@@ -46,6 +46,7 @@ namespace SmartPlanner.Helpers
                 Priority = task.Priority,
                 Status = task.Status,
                 User = task.User,
+                SubTasks = task.SubTasks.Select(subTask => subTask.ToViewModel()).ToList()
             };
         }
         public static List<TaskViewModel> ToViewModel(this List<TaskModel> tasks)
@@ -54,7 +55,7 @@ namespace SmartPlanner.Helpers
         }
         public static TaskModel ToDbModel(this TaskViewModel task)
         {
-            return new TaskModel
+            var taskDB = new TaskModel
             {
                 TaskModelId = task.TaskModelId,
                 UserId = task.UserId,
@@ -65,11 +66,34 @@ namespace SmartPlanner.Helpers
                 Priority = task.Priority,
                 Status = task.Status,
                 User = task.User,
+                SubTasks = task.SubTasks.Select(subTask => subTask.ToDbModel()).ToList()
             };
+            taskDB.SubTasks.ForEach(subTask => subTask.TaskId = task.TaskModelId);
+            return taskDB;
         }
         public static List<TaskModel> ToDbModel(this List<TaskViewModel> tasks)
         {
             return tasks.Select(t => t.ToDbModel()).ToList();
+        }
+        public static SubTask ToDbModel(this SubTaskViewModel subTask)
+        {
+            return new SubTask
+            {
+                Description = subTask.Description,
+                Title = subTask.Title,
+                SubTaskId = subTask.SubTaskId,
+                TaskId = subTask.TaskId,
+            };
+        }
+        public static SubTaskViewModel ToViewModel(this SubTask subTask)
+        {
+            return new SubTaskViewModel
+            {
+                Description = subTask.Description,
+                Title = subTask.Title,
+                SubTaskId = subTask.SubTaskId,
+                TaskId = subTask.TaskId,
+            };
         }
         public static GoalViewModel ToViewModel(this Goal goal)
         {
