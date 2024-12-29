@@ -61,5 +61,12 @@ namespace SmartPlannerDb
             var notes = await _context.Notes.AsNoTracking().Where(n => n.UserId == userId).Skip((page-1)*pageSize).Take(pageSize).ToListAsync();
             return notes;
         }
+
+        public int GetPageCount(string userId, int pageSize)
+        {
+            var cardCount = _context.Notes.Count(n => n.UserId == userId);
+            var pageCount = (int)Math.Ceiling((double)cardCount / pageSize);
+            return pageCount;
+        }
     }
 }

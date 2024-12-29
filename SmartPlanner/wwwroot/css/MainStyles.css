@@ -92,3 +92,24 @@ body {
 .dropdown-toggle::after {
     display: none; /* Убираем стрелку */
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+.paginationBtn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 0 5px;
+    text-decoration: none;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgb(140, 152, 221);
+    transition: background-color 0.3s;
+}
+
+    .paginationBtn:hover {
+        background-color: #f0e68c; /* Изменение цвета при наведении */
+    }

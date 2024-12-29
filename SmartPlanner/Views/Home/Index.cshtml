@@ -1,12 +1,12 @@
-﻿@model List<NoteViewModel>
+﻿@model HomeViewModel
 
 <div>
     <div class="row">
     @await Html.PartialAsync("/Views/Home/Components/AddNoteForm.cshtml", new NoteViewModel())
         <div class="row justify-content-center">
             @{
-                if(Model.Count > 0){
-                    foreach (var note in Model)
+                if(Model.Notes.Count > 0){
+                    foreach (var note in Model.Notes)
                     {
                         @await Html.PartialAsync("/Views/Home/Components/NoteCard.cshtml", note)
                     }
@@ -16,9 +16,12 @@
                 }
             }
         </div>
-        <a asp-action="Page" asp-route-page="1">Страница 1</a>
-        <a asp-action="Page" asp-route-page="2">Страница 2</a>
-        <a asp-action="Page" asp-route-page="3">Страница 3</a>
-        <a asp-action="CreateTest">Создать 8 тестовых заметок</a>
+        <div class="pagination">
+                @{
+                    for (int i = 1; i <= Model.PageCount; i++){
+                        <a class="paginationBtn antiquewhiteColor" asp-action="Page" asp-route-page="@i">@i</a>
+                    }
+                }
+            </div>
     </div>
 </div>

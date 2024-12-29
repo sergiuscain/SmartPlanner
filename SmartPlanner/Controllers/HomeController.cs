@@ -29,14 +29,26 @@ namespace SmartPlanner.Controllers
             var userId = _userManager.GetUserId(User);
             var notes = await _storage.GetByPageAsync(userId, 8, 1);
             var notesVm = notes.ToViewModel();
-            return View(notesVm);
+            var pageCount = _storage.GetPageCount(userId, 8);
+            var viewModel = new HomeViewModel 
+            { 
+                Notes = notesVm,
+                PageCount = pageCount
+            };
+            return View(viewModel);
         }
         public async Task<IActionResult> Page(int page)
         {
             var userId = _userManager.GetUserId(User);
             var notes = await _storage.GetByPageAsync(userId, 8, page);
             var notesVm = notes.ToViewModel();
-            return View("Index", notesVm);
+            var pageCount = _storage.GetPageCount(userId, 8);
+            var viewModel = new HomeViewModel
+            {
+                Notes = notesVm,
+                PageCount = pageCount
+            };
+            return View("Index", viewModel);
         }
 
         public async Task<IActionResult> DeleteAsync(Guid id)

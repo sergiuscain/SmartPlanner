@@ -11,4 +11,5 @@ public interface INotesStorage
     Task<Note> GetByIdAsync(Guid id);
     Task UpdateAsync(Note note);
     Task<List<Note>> GetByPageAsync(string userId, int pageSize, int page);
+    int GetPageCount(string userId, int pageSize);
 }
