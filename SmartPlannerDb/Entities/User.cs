@@ -12,5 +12,6 @@ namespace SmartPlannerDb.Entities
         public ICollection<Note> Notes { get; set; }
         public ICollection<TaskModel> Tasks { get; set; }
         public ICollection<Goal> Goals { get; set; }
+        public ICollection<Project> Projects { get; set; }
     }
 }

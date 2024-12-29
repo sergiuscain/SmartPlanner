@@ -11,5 +11,8 @@
 
         //Навигационные свойства:
         public User User { get; set; }
+
+        // Связь с проектом (необязательное свойство)
+        public Guid? ProjectId { get; set; } // Nullable Guid
     }
 }

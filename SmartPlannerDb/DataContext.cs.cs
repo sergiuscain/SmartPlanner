@@ -12,6 +12,7 @@ namespace SmartPlannerDb
         public DbSet<TaskModel> Tasks { get; set; }
         public DbSet<Goal> Goals { get; set; }
         public DbSet<SubTask> SubTasks { get; set; }
+        public DbSet<Project> Projects { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
@@ -39,6 +40,31 @@ namespace SmartPlannerDb
                 .HasOne(st => st.Task)
                 .WithMany(t => t.SubTasks)
                 .HasForeignKey(st => st.TaskId);
+
+            modelBuilder.Entity<Project>()
+            .HasOne(p => p.User)
+            .WithMany(u => u.Projects) // Укажите, если у пользователя есть коллекция проектов
+            .HasForeignKey(p => p.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            // Настройка отношений между проектом и задачами, заметками и целями
+            modelBuilder.Entity<TaskModel>()
+                .HasOne<Project>()
+                .WithMany(p => p.Tasks)
+                .HasForeignKey(t => t.ProjectId)
+                .OnDelete(DeleteBehavior.Restrict); 
+
+            modelBuilder.Entity<Note>()
+                .HasOne<Project>()
+                .WithMany(p => p.Notes)
+                .HasForeignKey(n => n.ProjectId)
+                .OnDelete(DeleteBehavior.Restrict); 
+
+            modelBuilder.Entity<Goal>()
+                .HasOne<Project>()
+                .WithMany(p => p.Goals)
+                .HasForeignKey(g => g.ProjectId)
+                .OnDelete(DeleteBehavior.Restrict); 
         }
         
     }
