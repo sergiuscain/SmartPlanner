@@ -39,7 +39,6 @@ namespace SmartPlannerDb
         public async Task<Goal> GetByIdAsync(Guid id)
         {
             return await _context.Goals
-                .AsNoTracking()
                 .FirstOrDefaultAsync(g => g.Id == id);
         }
         public async Task AddPointsAsync(Guid goalId, int point)

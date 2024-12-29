@@ -10,45 +10,8 @@
     <div class="row">
         @foreach (var goal in Model)
         {
-            <div class="col-md-12 mb-4">
-                <div class="card goalCard">
-                    <div class="card-body">
-                        <p class="card-text">@goal.Description</p>
-                        <div class="progress mb-3 bg-warning">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: @((goal.CurrentProgress * 100) / goal.TotalProgress)%;"
-                                 aria-valuenow="@goal.CurrentProgress" aria-valuemin="0" aria-valuemax="@goal.TotalProgress">
-                                @goal.CurrentProgress / @goal.TotalProgress
-                            </div>
-                        </div>
-                        @* Форма для добавления очков *@
-                        <form asp-action="AddPoints" method="post" class="mt-3">
-                            <input type="hidden" name="id" value="@goal.Id" />
-                            <div class="input-group">
-                                <input type="number" name="points" class="form-control" placeholder="Добавить очки" required />
-                                <button type="submit" class="btn btn-success">Добавить</button>
-                            </div>
-                        </form>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="actionMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <p>Действия</p>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="actionMenuButton">
-                                <li>
-                                    <form asp-action="Edit" method="post">
-                                        <input type="hidden" asp-for="@goal.Description" value="@goal.Description" />
-                                        <input type="hidden" asp-for="@goal.CurrentProgress" value="@goal.CurrentProgress" />
-                                        <input type="hidden" asp-for="@goal.TotalProgress" value="@goal.TotalProgress" /><br />
-                                        <input type="hidden" asp-for="@goal.Id" />
-                                        <input type="hidden" asp-for="@goal.UserId" />
-                                        <button type="submit">Изменить</button>
-                                    </form>
-                                </li>
-                                <li><a class="dropdown-item btn btn-primary" asp-area="" asp-controller="Goal" asp-action="Delete" asp-route-id="@goal.Id">Удалить</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @await Html.PartialAsync("/Views/Goal/Components/GoalCard.cshtml", goal)
         }
     </div>
+    <div class="text-center createButton"><a class="antiquewhiteColor" asp-area="" asp-asp-controller="Task" asp-action="Create">+</a> </div>
 </div>

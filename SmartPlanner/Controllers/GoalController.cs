@@ -36,16 +36,13 @@ namespace SmartPlanner.Controllers
         // POST: GoalController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(GoalViewModel goal)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var userId = _userManager.GetUserId(this.User);
+            goal.UserId = userId;
+            var goalDB = goal.ToDbModel();
+            await _storage.AddAsync(goalDB);
+            return RedirectToAction("Index");
         }
 
         // GET: GoalController/Edit/5

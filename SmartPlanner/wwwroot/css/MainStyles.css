@@ -70,7 +70,7 @@ body {
   margin: 1px;
 }
 
-#createTaskButton {
+.createButton {
     background-color: rgb(98, 95, 134);
     height: 3vmax;
     width: 3vmax;
@@ -80,7 +80,7 @@ body {
     bottom: 1vmax;
     right: 1vmax;
 }
-#createTaskButtonA {
+.antiquewhiteColor {
     color: antiquewhite;
 }
 .notesBlock {
