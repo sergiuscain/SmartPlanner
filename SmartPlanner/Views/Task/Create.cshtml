@@ -1,5 +1,5 @@
 ﻿@model TaskViewModel
-
+@Model
 <div>
     <div class="row">
         <div class="btn">
@@ -9,7 +9,7 @@
 
                 <p class="mainColor">Описание</p>
                 <textarea class="inputBlock" width="70%" type="text" id="inputText" placeholder="Введите описание" asp-for="Description"></textarea><br />
-
+                <input name="ProjectId" type="hidden" value="@Model.ProjectId" />
                 <h3 class="mainColor">Подзадачи</h3>
                 <div id="subtask-container">
                     <div class="subtask mainColor">

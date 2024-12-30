@@ -13,6 +13,7 @@ namespace SmartPlanner.Models
         public DateTime DateOfCreation { get; set; }
         public DateTime Deadline { get; set; }
         public List<SubTaskViewModel> SubTasks { get; set; }
+        public Guid? ProjectId { get; set; } // Nullable Guid
 
         //Навигационные свойства:
         public User User { get; set; }

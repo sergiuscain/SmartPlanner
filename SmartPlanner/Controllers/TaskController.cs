@@ -74,7 +74,14 @@ namespace SmartPlanner.Controllers
             model.DateOfCreation = DateTime.Now;
             var task = model.ToDbModel();
             await _storage.AddAsync(task);
-            return RedirectToAction(model.Status);
+            if (model.ProjectId == null)
+                return RedirectToAction(model.Status);
+            else
+                return RedirectToAction("Details", "Projects", new { id = model.ProjectId, tab = "Tasks" });
+        }
+        public async Task<IActionResult> CreateForProject(Guid projectId)
+        {
+            return View("Create", new TaskViewModel{ ProjectId = projectId });
         }
         public async Task<IActionResult> EditStatus(Guid taskId, string newStatus)
         {
