@@ -1,0 +1,72 @@
+﻿@model ProjectViewModel
+
+<h2>@Model.Title</h2>
+
+@await Html.PartialAsync("Components/_ProjectTabs", Model)
+
+<div class="mt-3">
+    @if (ViewData["ActiveTab"]?.ToString() == "Tasks")
+    {
+        <h3>Задачи</h3>
+        <a class="btn btn-dark" asp-controller="Task" asp-action="CreateForProject">Создать</a>
+        <div class="d-flex flex-wrap">
+            <div class="col-4 notesBlock">
+                <h5>Ожидание</h5>
+                @foreach (var task in Model.Tasks.Where(t => t.Status == Status.Pending.ToString()))
+                {
+                    @await Html.PartialAsync("/Views/Task/Components/TaskCard.cshtml", task)
+                }
+            </div>
+
+            <div class="col-4 notesBlock">
+                <h5>В работе</h5>
+                @foreach (var task in Model.Tasks.Where(t => t.Status == Status.InProgress.ToString()))
+                {
+                    @await Html.PartialAsync("/Views/Task/Components/TaskCard.cshtml", task)
+                }
+            </div>
+
+            <div class="col-4 notesBlock">
+                <h5>В тестировании</h5>
+                @foreach (var task in Model.Tasks.Where(t => t.Status == Status.InTesting.ToString()))
+                {
+                    @await Html.PartialAsync("/Views/Task/Components/TaskCard.cshtml", task)
+                }
+            </div>
+
+            <div class="col-4 notesBlock">
+                <h5>Выполнено</h5>
+                @foreach (var task in Model.Tasks.Where(t => t.Status == Status.Done.ToString()))
+                {
+                    @await Html.PartialAsync("/Views/Task/Components/TaskCard.cshtml", task)
+                }
+            </div>
+        </div>
+    }
+    else if (ViewData["ActiveTab"]?.ToString() == "Goals")
+    {
+        <h3>Цели</h3>
+        <a class="btn btn-dark" asp-controller="Goal" asp-action="CreateForProject">Создать</a>
+        <ul class="row">
+            @foreach (var goal in Model.Goals)
+            {
+                @await Html.PartialAsync("/Views/Goal/Components/GoalCard.cshtml", goal)
+            }
+        </ul>
+    }
+    else if (ViewData["ActiveTab"]?.ToString() == "Notes")
+    {
+        <h3>Заметки</h3>
+        <a class="btn btn-dark" asp-controller="Note" asp-action="CreateForProject">Создать</a>
+        <div class="row">
+            @foreach (var note in Model.Notes)
+            {
+                @await Html.PartialAsync("/Views/Home/Components/NoteCard.cshtml", note)
+            }
+        </div>
+    }
+    else
+    {
+        <p>Выберите вкладку для отображения.</p>
+    }
+</div>

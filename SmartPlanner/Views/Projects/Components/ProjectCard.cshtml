@@ -1,0 +1,12 @@
+﻿@model ProjectViewModel
+
+<div class="col-4 m-1  projectParam">
+    <div class="card-body d-flex flex-column">
+        <a asp-area="" asp-controller="Projects" asp-action="Details" asp-route-id="@Model.ProjectId"><h5 class="card-title">@Model.Title</h5></a>
+        <hr />
+        <p class="card-text">@Model.Description</p>
+        <form method="post" asp-area="" asp-controller="Projects" asp-action="Delete" asp-route-id="@Model.ProjectId">
+            <button type="submit" class="btn btn-danger">Удалить</button>
+        </form>
+    </div>
+</div>

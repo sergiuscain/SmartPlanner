@@ -20,6 +20,7 @@ namespace SmartPlanner.Services.Extensions
             builder.Services.AddScoped<INotesStorage, NotesStorage>(); //Сервис для работы с заметками. (Хранилище заметок)
             builder.Services.AddScoped<ITasksStorage, TasksStorage>(); //Сервис для работы с задачами
             builder.Services.AddScoped<IGoalsStorage, GoalsStorage>(); //Сервис для работы с целями
+            builder.Services.AddScoped<IProjectsStorage, ProjectsStorage>(); //Сервис для работы с проектами
 
             //Настройка куки
             builder.Services.ConfigureApplicationCookie(options =>

@@ -1,0 +1,16 @@
+﻿@model ProjectViewModel
+
+<div class="nav nav-tabs">
+    <a class="nav-item nav-link @(ViewData["ActiveTab"] == "Tasks" ? "active" : "")"
+       asp-area="" asp-controller="Projects" asp-action="Details" asp-route-id="@Model.ProjectId" asp-route-tab="Tasks">
+        Задачи
+    </a>
+    <a class="nav-item nav-link @(ViewData["ActiveTab"] == "Goals" ? "active" : "")"
+       asp-area="" asp-controller="Projects" asp-action="Details" asp-route-id="@Model.ProjectId" asp-route-tab="Goals">
+        Цели
+    </a>
+    <a class="nav-item nav-link @(ViewData["ActiveTab"] == "Notes" ? "active" : "")"
+       asp-area="" asp-controller="Projects" asp-action="Details" asp-route-id="@Model.ProjectId" asp-route-tab="Notes">
+        Заметки
+    </a>
+</div>

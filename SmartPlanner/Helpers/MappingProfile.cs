@@ -125,5 +125,57 @@ namespace SmartPlanner.Helpers
         {
             return goals.Select(g => g.ToDbModel()).ToList();
         }
+        public static ProjectViewModel ToViewModel(this Project project)
+        {
+            if (project.Tasks == null)
+                project.Tasks = new();
+            if (project.Goals == null)
+                project.Goals = new();
+            if (project.Notes == null)
+                project.Notes = new();
+
+            return new ProjectViewModel
+            {
+                ProjectId = project.ProjectId,
+                UserId = project.UserId,
+                Title = project.Title,
+                Description = project.Description,
+                DateOfCreation = project.DateOfCreation,
+                Deadline = project.Deadline,
+                Goals = project.Goals.ToViewModel(),
+                Notes = project.Notes.ToViewModel(),
+                Tasks = project.Tasks.ToViewModel(),
+            };
+        }
+        public static List<ProjectViewModel> ToViewModel(this List<Project> projects)
+        {
+            return projects.Select(p => p.ToViewModel()).ToList();
+        }
+        public static Project ToDbModel(this ProjectViewModel project)
+        {
+            if (project.Tasks == null)
+                project.Tasks = new();
+            if (project.Goals == null)
+                project.Goals = new();
+            if (project.Notes == null)
+                project.Notes = new();
+
+            return new Project
+            {
+                ProjectId = project.ProjectId,
+                UserId = project.UserId,
+                Title = project.Title,
+                Description = project.Description,
+                DateOfCreation = project.DateOfCreation,
+                Deadline = project.Deadline,
+                Goals = project.Goals.ToDbModel(),
+                Notes = project.Notes.ToDbModel(),
+                Tasks = project.Tasks.ToDbModel(),
+            };
+        }
+        public static List<Project> ToViewModel(this List<ProjectViewModel> projects)
+        {
+            return projects.Select(p => p.ToDbModel()).ToList();
+        }
     }
 }
