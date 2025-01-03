@@ -36,6 +36,7 @@ asp mvc, entity framework, bootstrap, частичные представлен�
 
 ### Регистрация и авторизация через Asp.Identity
 ![image](https://github.com/user-attachments/assets/f91b322d-2638-42c8-a89c-0e4a056faa8c)
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/2eaa2db2-fbc3-4e67-b614-f8a4d2aecf0b)
+
 
 ### Диаграмма базы данных. 
