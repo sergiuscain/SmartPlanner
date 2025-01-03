@@ -30,18 +30,17 @@ namespace SmartPlanner.Controllers
             var projectsVM = projects.ToViewModel();
             return View(projectsVM);
         }
-        public async Task<IActionResult> CreateTestProject()
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(ProjectViewModel model)
         {
             var userId = _userManager.GetUserId(this.User);
-            var project = new ProjectViewModel
-            {
-                DateOfCreation = DateTime.Now,
-                Deadline = DateTime.Now.AddDays(2),
-                Description = "Это ваш первый проект",
-                Title = "Тестовый проект",
-                UserId = userId,
-            };
-            await _prjectStorage.AddAsync(project.ToDbModel());
+            model.UserId = userId;
+            var modelDB = model.ToDbModel();
+            await _prjectStorage.AddAsync(modelDB);
             return RedirectToAction("Index");
         }
         public async Task<IActionResult> Details(Guid id, string tab)
