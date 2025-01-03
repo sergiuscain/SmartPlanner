@@ -1,0 +1,19 @@
+﻿@model GoalViewModel
+
+<div>
+    <div class="row">
+        <div class="btn">
+            <form method="post">
+                <label asp-for="Description" class="mainColor">Описание</label>
+                <input class="inputBlock" type="text" id="inputText" placeholder="Введите текст заметки" asp-for="Description" /><br />
+
+                <label asp-for="TotalProgress" class="mainColor">Цель</label>
+                <input class="inputBlock" type="text" id="inputText" placeholder="Введите текст заметки" asp-for="TotalProgress" /><br />
+
+                <input class="inputBlock" type="text" id="inputText" asp-for="ProjectId" /><br />
+
+                <button class="mainColor" type="submit" asp-action="CreateForProject">Создать</button>
+            </form>
+        </div>
+    </div>
+</div>

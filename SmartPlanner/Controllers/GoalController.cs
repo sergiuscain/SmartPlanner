@@ -44,6 +44,23 @@ namespace SmartPlanner.Controllers
             await _storage.AddAsync(goalDB);
             return RedirectToAction("Index");
         }
+        public ActionResult CreateForProject(Guid projectId)
+        {
+            var viewModel = new GoalViewModel { ProjectId = projectId };
+            return View(viewModel);
+        }
+
+        // POST: GoalController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateForProject(GoalViewModel goal)
+        {
+            var userId = _userManager.GetUserId(this.User);
+            goal.UserId = userId;
+            var goalDB = goal.ToDbModel();
+            await _storage.AddAsync(goalDB);
+            return RedirectToAction("Details", "Projects", new {id = goal.ProjectId, tab = "Goals" });
+        }
 
         // GET: GoalController/Edit/5
         public ActionResult Edit(GoalViewModel goal)
