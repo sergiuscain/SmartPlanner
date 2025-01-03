@@ -10,3 +10,8 @@ asp mvc, entity framework, bootstrap, частичные представлен�
 ![image](https://github.com/user-attachments/assets/a0162569-3c84-42c1-8cac-fb1e4cda9e66)
 #### Цели проекта (можно добавить отрицательную величину для уменьшения прогресса)
 ![image](https://github.com/user-attachments/assets/5fb31817-60d6-48cd-b32b-73844d5da2a4)
+![image](https://github.com/user-attachments/assets/edf0b1d8-b84b-47ad-902a-39148300fc95)
+#### Изменение цели
+![image](https://github.com/user-attachments/assets/50af3a80-8712-4bc0-82b9-d89dbb5c1d41)
+
+
