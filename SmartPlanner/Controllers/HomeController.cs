@@ -65,6 +65,20 @@ namespace SmartPlanner.Controllers
             await _storage.AddAsync(noteDb);
             return RedirectToAction("Index");
         }
+        public async Task<IActionResult> CreateForProject(Guid projectId)
+        {
+            var taskVM = new NoteViewModel { ProjectId = projectId };
+            return View(taskVM);
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateForProject(NoteViewModel note)
+        {
+            var currentUser = this.User;
+            var noteDb = note.ToDbModel();
+            noteDb.UserId = _userManager.GetUserId(currentUser);
+            await _storage.AddAsync(noteDb);
+            return RedirectToAction("Details", "Projects", new {id = note.ProjectId, tab = "Notes" });
+        }
         public async Task<IActionResult> CreateTest()
         {
             var currentUser = _userManager.GetUserId(User);

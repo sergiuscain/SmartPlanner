@@ -57,7 +57,7 @@
     else if (ViewData["ActiveTab"]?.ToString() == "Notes")
     {
         <h3>Заметки</h3>
-        <a class="btn btn-dark" asp-controller="Note" asp-action="CreateForProject" asp-route-ProjectId="@Model.ProjectId">Создать</a>
+        <a class="btn btn-dark" asp-controller="Home" asp-action="CreateForProject" asp-route-ProjectId="@Model.ProjectId">Создать</a>
         <div class="row">
             @foreach (var note in Model.Notes)
             {

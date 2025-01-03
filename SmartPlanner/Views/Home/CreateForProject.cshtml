@@ -1,0 +1,19 @@
+﻿@model NoteViewModel
+
+<div>
+    <div class="row">
+        <div class="btn">
+            <form method="post">
+                <label asp-for="Title" class="mainColor">Название</label>
+                <input class="inputBlock" type="text" id="inputText" placeholder="Введите текст заметки" asp-for="Title" /><br />
+
+                <label asp-for="Description" class="mainColor">Описание</label>
+                <input class="inputBlock" type="text" id="inputText" placeholder="Введите текст заметки" asp-for="Description" /><br />
+
+                <input class="inputBlock" type="text" id="inputText" asp-for="ProjectId" /><br />
+
+                <button class="mainColor" type="submit" asp-action="CreateForProject">Создать</button>
+            </form>
+        </div>
+    </div>
+</div>
