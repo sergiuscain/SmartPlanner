@@ -19,7 +19,18 @@ asp mvc, entity framework, bootstrap, частичные представлен�
 ![image](https://github.com/user-attachments/assets/358105ba-85f8-4d05-823d-c31c3bf070b9)
 ![image](https://github.com/user-attachments/assets/27bb15b9-1651-4027-8ce5-8848c85be568)
 
+### Есть отдельные вкладки Заметок, целей и задач. В них отображаются задачи, заметки и цели всех проектов и те задачи, заметки и цели, которые не относятся к какому либо проекту.
+![image](https://github.com/user-attachments/assets/a9385f29-d02d-4e52-990c-608560405e8e)
+![image](https://github.com/user-attachments/assets/180e9b98-924e-49ea-86c4-e4449b00dac4)
+![image](https://github.com/user-attachments/assets/86de697a-fd20-42e9-b59c-a8fe99c174f4)
+#### Смена статуса задачи 
+![image](https://github.com/user-attachments/assets/9e759773-df61-45d7-aff9-5775b8f8fa44)
+####
+Все цели
+![image](https://github.com/user-attachments/assets/fa97b2ad-4b1d-49d3-8ada-02ec1260bbb6)
+
 
 ### Пагинцаия
 ![image](https://github.com/user-attachments/assets/ad3bdafa-3555-48fa-80b3-b94a661b96dd)
 ###### страниц ровно столько, сколько нужно для всех заметок. При добавлении/удалении заметок количество страниц меняется!
+
