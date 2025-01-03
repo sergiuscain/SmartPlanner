@@ -53,7 +53,10 @@ namespace SmartPlanner.Controllers
 
         public async Task<IActionResult> DeleteAsync(Guid id)
         {
+            var note = await _storage.GetByIdAsync(id);
             await _storage.DeleteAsync(id);
+            if (note.ProjectId != null)
+                return RedirectToAction("Details", "Projects", new { id = note.ProjectId, tab = "Notes" });
             return RedirectToAction("Index");
         }
 
@@ -106,6 +109,8 @@ namespace SmartPlanner.Controllers
         {
             var noteDb = note.ToDbModel();
             await _storage.UpdateAsync(noteDb);
+            if (note.ProjectId != null)
+                return RedirectToAction("Details", "Projects", new { id = note.ProjectId, tab = "Notes" });
             return RedirectToAction("Index");
         }
         public IActionResult Privacy()

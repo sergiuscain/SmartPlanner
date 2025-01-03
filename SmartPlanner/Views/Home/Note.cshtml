@@ -7,6 +7,9 @@
             <textarea asp-for="Description" class="card-text">@Model.Description</textarea>
             <input type="hidden" asp-for="NoteId" value="@Model.NoteId"/>
             <input type="hidden" asp-for="UserId" value="@Model.UserId"/>
+            @if(Model.ProjectId != null){
+                <input type="hidden" asp-for="ProjectId" value="@Model.ProjectId" />
+            }
             <button type="submit" asp-area="" asp-controller="Home" asp-action="Update" class="btn btn-success mt-auto">Сохранить</button>
             <a asp-area="" asp-controller="Home" asp-action="Delete" asp-route-id="@Model.NoteId" class="btn btn-danger mt-auto">Удалить</a>
         </div>
