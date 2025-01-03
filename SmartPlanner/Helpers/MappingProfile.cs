@@ -58,7 +58,6 @@ namespace SmartPlanner.Helpers
             var taskDB = new TaskModel
             {
                 TaskModelId = task.TaskModelId,
-                ProjectId = task.ProjectId,
                 UserId = task.UserId,
                 Title = task.Title,
                 Description = task.Description,
