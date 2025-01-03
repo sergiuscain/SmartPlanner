@@ -4,3 +4,5 @@ asp mvc, entity framework, bootstrap, частичные представлен�
 
 ### Проекты
 ![image](https://github.com/user-attachments/assets/62dd1760-b989-4a51-aae1-d761ceca3c3d)
+#### Заметки в проекте
+![image](https://github.com/user-attachments/assets/e049d39c-4e24-479e-a158-e70f1a615271)
