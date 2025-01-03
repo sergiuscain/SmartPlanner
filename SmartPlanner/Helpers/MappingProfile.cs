@@ -5,172 +5,201 @@ namespace SmartPlanner.Helpers
 {
     public static class MappingProfile
     {
-        public static NoteViewModel ToViewModel(this Note note)
+        public static NoteViewModel ToViewModel(this Note model)
         {
-            return new NoteViewModel
+            var viewModel = new NoteViewModel
             {
-                NoteId = note.NoteId,
-                Description = note.Description,
-                Title = note.Title,
-                UserId = note.UserId,
+                NoteId = model.NoteId,
+                Description = model.Description,
+                Title = model.Title,
+                UserId = model.UserId,
             };
+            if (model.ProjectId != null)
+            {
+                viewModel.ProjectId = model.ProjectId;
+            }
+            return viewModel;
         }
         public static List<NoteViewModel> ToViewModel(this List<Note> notes)
         {
             return notes.Select(n => n.ToViewModel()).ToList();
         }
-        public static Note ToDbModel(this NoteViewModel note)
+        public static Note ToDbModel(this NoteViewModel model)
         {
-            return new Note
+            var dBModel = new Note
             {
-                NoteId = note.NoteId,
-                Description = note.Description,
-                Title = note.Title,
-                UserId = note.UserId,
+                NoteId = model.NoteId,
+                Description = model.Description,
+                Title = model.Title,
+                UserId = model.UserId,
             };
+            if (model.ProjectId != null)
+            {
+                dBModel.ProjectId = model.ProjectId;
+            }
+            return dBModel;
         }
         public static List<Note> ToDbModel(this List<NoteViewModel> notes)
         {
             return notes.Select(n => n.ToDbModel()).ToList();
         }
-        public static TaskViewModel ToViewModel(this TaskModel task)
+        public static TaskViewModel ToViewModel(this TaskModel model)
         {
-            return new TaskViewModel
+            var viewModel = new TaskViewModel
             {
-                TaskModelId = task.TaskModelId,
-                UserId = task.UserId,
-                Title = task.Title,
-                Description = task.Description,
-                DateOfCreation = task.DateOfCreation,
-                Deadline = task.Deadline,
-                Priority = task.Priority,
-                Status = task.Status,
-                User = task.User,
-                SubTasks = task.SubTasks.Select(subTask => subTask.ToViewModel()).ToList()
+                TaskModelId = model.TaskModelId,
+                UserId = model.UserId,
+                Title = model.Title,
+                Description = model.Description,
+                DateOfCreation = model.DateOfCreation,
+                Deadline = model.Deadline,
+                Priority = model.Priority,
+                Status = model.Status,
+                User = model.User,
+                SubTasks = model.SubTasks.Select(subTask => subTask.ToViewModel()).ToList()
             };
+            if (model.ProjectId != null)
+            {
+                viewModel.ProjectId = model.ProjectId;
+            }
+            return viewModel;
         }
         public static List<TaskViewModel> ToViewModel(this List<TaskModel> tasks)
         {
             return tasks.Select(t => t.ToViewModel()).ToList();
         }
-        public static TaskModel ToDbModel(this TaskViewModel task)
+        public static TaskModel ToDbModel(this TaskViewModel model)
         {
             var taskDB = new TaskModel
             {
-                TaskModelId = task.TaskModelId,
-                UserId = task.UserId,
-                Title = task.Title,
-                Description = task.Description,
-                DateOfCreation = task.DateOfCreation,
-                Deadline = task.Deadline,
-                Priority = task.Priority,
-                Status = task.Status,
-                User = task.User,
-                SubTasks = task.SubTasks.Select(subTask => subTask.ToDbModel()).ToList()
+                TaskModelId = model.TaskModelId,
+                UserId = model.UserId,
+                Title = model.Title,
+                Description = model.Description,
+                DateOfCreation = model.DateOfCreation,
+                Deadline = model.Deadline,
+                Priority = model.Priority,
+                Status = model.Status,
+                User = model.User,
+                SubTasks = model.SubTasks.Select(subTask => subTask.ToDbModel()).ToList()
             };
-            taskDB.SubTasks.ForEach(subTask => subTask.TaskId = task.TaskModelId);
+            taskDB.SubTasks.ForEach(subTask => subTask.TaskId = model.TaskModelId);
+            if (model.ProjectId != null)
+            {
+                taskDB.ProjectId = model.ProjectId;
+            }
             return taskDB;
         }
         public static List<TaskModel> ToDbModel(this List<TaskViewModel> tasks)
         {
             return tasks.Select(t => t.ToDbModel()).ToList();
         }
-        public static SubTask ToDbModel(this SubTaskViewModel subTask)
+        public static SubTask ToDbModel(this SubTaskViewModel model)
         {
             return new SubTask
             {
-                Description = subTask.Description,
-                Title = subTask.Title,
-                SubTaskId = subTask.SubTaskId,
-                TaskId = subTask.TaskId,
+                Description = model.Description,
+                Title = model.Title,
+                SubTaskId = model.SubTaskId,
+                TaskId = model.TaskId,
             };
         }
-        public static SubTaskViewModel ToViewModel(this SubTask subTask)
+        public static SubTaskViewModel ToViewModel(this SubTask model)
         {
             return new SubTaskViewModel
             {
-                Description = subTask.Description,
-                Title = subTask.Title,
-                SubTaskId = subTask.SubTaskId,
-                TaskId = subTask.TaskId,
+                Description = model.Description,
+                Title = model.Title,
+                SubTaskId = model.SubTaskId,
+                TaskId = model.TaskId,
             };
         }
-        public static GoalViewModel ToViewModel(this Goal goal)
+        public static GoalViewModel ToViewModel(this Goal model)
         {
-            return new GoalViewModel
+            var viewModel = new GoalViewModel
             {
-                Id = goal.Id,
-                Description = goal.Description,
-                CurrentProgress = goal.CurrentProgress,
-                TotalProgress = goal.TotalProgress,
-                UserId = goal.UserId,
+                Id = model.Id,
+                Description = model.Description,
+                CurrentProgress = model.CurrentProgress,
+                TotalProgress = model.TotalProgress,
+                UserId = model.UserId,
             };
+            if (model.ProjectId != null)
+            {
+                viewModel.ProjectId = model.ProjectId;
+            }
+            return viewModel;
         }
         public static List<GoalViewModel> ToViewModel(this List<Goal> goals)
         {
             return goals.Select(t => t.ToViewModel()).ToList();
         }
-        public static Goal ToDbModel(this GoalViewModel goal)
+        public static Goal ToDbModel(this GoalViewModel model)
         {
-            return new Goal
+            var dBModel = new Goal
             {
-                Id = goal.Id,
-                Description = goal.Description,
-                CurrentProgress = goal.CurrentProgress,
-                TotalProgress = goal.TotalProgress,
-                UserId = goal.UserId,
+                Id = model.Id,
+                Description = model.Description,
+                CurrentProgress = model.CurrentProgress,
+                TotalProgress = model.TotalProgress,
+                UserId = model.UserId,
             };
+            if (model.ProjectId != null)
+            {
+                dBModel.ProjectId = model.ProjectId;
+            }
+            return dBModel;
         }
         public static List<Goal> ToDbModel(this List<GoalViewModel> goals)
         {
             return goals.Select(g => g.ToDbModel()).ToList();
         }
-        public static ProjectViewModel ToViewModel(this Project project)
+        public static ProjectViewModel ToViewModel(this Project model)
         {
-            if (project.Tasks == null)
-                project.Tasks = new();
-            if (project.Goals == null)
-                project.Goals = new();
-            if (project.Notes == null)
-                project.Notes = new();
+            if (model.Tasks == null)
+                model.Tasks = new();
+            if (model.Goals == null)
+                model.Goals = new();
+            if (model.Notes == null)
+                model.Notes = new();
 
             return new ProjectViewModel
             {
-                ProjectId = project.ProjectId,
-                UserId = project.UserId,
-                Title = project.Title,
-                Description = project.Description,
-                DateOfCreation = project.DateOfCreation,
-                Deadline = project.Deadline,
-                Goals = project.Goals.ToViewModel(),
-                Notes = project.Notes.ToViewModel(),
-                Tasks = project.Tasks.ToViewModel(),
+                ProjectId = model.ProjectId,
+                UserId = model.UserId,
+                Title = model.Title,
+                Description = model.Description,
+                DateOfCreation = model.DateOfCreation,
+                Deadline = model.Deadline,
+                Goals = model.Goals.ToViewModel(),
+                Notes = model.Notes.ToViewModel(),
+                Tasks = model.Tasks.ToViewModel(),
             };
         }
         public static List<ProjectViewModel> ToViewModel(this List<Project> projects)
         {
             return projects.Select(p => p.ToViewModel()).ToList();
         }
-        public static Project ToDbModel(this ProjectViewModel project)
+        public static Project ToDbModel(this ProjectViewModel model)
         {
-            if (project.Tasks == null)
-                project.Tasks = new();
-            if (project.Goals == null)
-                project.Goals = new();
-            if (project.Notes == null)
-                project.Notes = new();
+            if (model.Tasks == null)
+                model.Tasks = new();
+            if (model.Goals == null)
+                model.Goals = new();
+            if (model.Notes == null)
+                model.Notes = new();
 
             return new Project
             {
-                ProjectId = project.ProjectId,
-                UserId = project.UserId,
-                Title = project.Title,
-                Description = project.Description,
-                DateOfCreation = project.DateOfCreation,
-                Deadline = project.Deadline,
-                Goals = project.Goals.ToDbModel(),
-                Notes = project.Notes.ToDbModel(),
-                Tasks = project.Tasks.ToDbModel(),
+                ProjectId = model.ProjectId,
+                UserId = model.UserId,
+                Title = model.Title,
+                Description = model.Description,
+                DateOfCreation = model.DateOfCreation,
+                Deadline = model.Deadline,
+                Goals = model.Goals.ToDbModel(),
+                Notes = model.Notes.ToDbModel(),
+                Tasks = model.Tasks.ToDbModel(),
             };
         }
         public static List<Project> ToViewModel(this List<ProjectViewModel> projects)

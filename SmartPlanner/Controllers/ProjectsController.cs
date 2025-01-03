@@ -48,16 +48,9 @@ namespace SmartPlanner.Controllers
         {
             var userId = _userManager.GetUserId(this.User);
             var project = await _prjectStorage.GetAsync(id);
-            if(project.UserId == userId)
-            {
-                var projectVM = project.ToViewModel();
-                ViewData["ActiveTab"] = tab ?? "Tasks"; // Установите вкладку по умолчанию
-                return View(projectVM);
-            }
-            else //Если по какой-то причине пользователь пытается открыть чужой проект, то его перекидывает на страницу с его проектами
-            {
-                return RedirectToAction("Index");
-            }
+            var projectVM = project.ToViewModel();
+            ViewData["ActiveTab"] = tab ?? "Tasks"; // Установите вкладку по умолчанию
+            return View(projectVM);
         }
         public async Task<IActionResult> Delete(Guid id)
         {

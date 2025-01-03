@@ -76,6 +76,24 @@ namespace SmartPlanner.Controllers
             await _storage.AddAsync(task);
             return RedirectToAction(model.Status);
         }
+
+        public IActionResult CreateForProject(Guid ProjectId)
+        {
+            var projectVM = new TaskViewModel { ProjectId = ProjectId };
+            return View(projectVM);
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateForProject(TaskViewModel model)
+        {
+            var userId = _userManager.GetUserId(this.User);
+            model.TaskModelId = Guid.NewGuid();
+            model.UserId = userId;
+            model.DateOfCreation = DateTime.Now;
+            var task = model.ToDbModel();
+            await _storage.AddAsync(task);
+            return RedirectToAction("Details", "Projects", new { id = model.ProjectId, tab = "Tasks" });
+        }
+        
         public async Task<IActionResult> EditStatus(Guid taskId, string newStatus)
         {
             var lastAction = Request.Headers["Referer"].ToString().Split('/').Last();

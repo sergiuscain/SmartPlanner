@@ -8,7 +8,7 @@
     @if (ViewData["ActiveTab"]?.ToString() == "Tasks")
     {
         <h3>Задачи</h3>
-        <a class="btn btn-dark" asp-controller="Task" asp-action="CreateForProject">Создать</a>
+        <a class="btn btn-dark" asp-controller="Task" asp-action="CreateForProject" asp-route-ProjectId="@Model.ProjectId">Создать</a>
         <div class="d-flex flex-wrap">
             <div class="col-4 notesBlock">
                 <h5>Ожидание</h5>
