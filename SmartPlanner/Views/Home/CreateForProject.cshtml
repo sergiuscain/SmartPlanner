@@ -10,7 +10,7 @@
                 <label asp-for="Description" class="mainColor">Описание</label>
                 <input class="inputBlock" type="text" id="inputText" placeholder="Введите текст заметки" asp-for="Description" /><br />
 
-                <input class="inputBlock" type="text" id="inputText" asp-for="ProjectId" /><br />
+                <input type="hidden" class="inputBlock" type="text" id="inputText" asp-for="ProjectId" /><br />
 
                 <button class="mainColor" type="submit" asp-action="CreateForProject">Создать</button>
             </form>

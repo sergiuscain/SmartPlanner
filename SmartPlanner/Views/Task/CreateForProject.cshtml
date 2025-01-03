@@ -37,7 +37,7 @@
                     <option value="4">Приоритет 4</option>
                 </select><br /><br />
 
-                <input readonly class="inputBlock" type="text" id="inputText" asp-for="ProjectId" value="@Model.ProjectId" /><br />
+                <input type="hidden" readonly class="inputBlock" id="inputText" asp-for="ProjectId" value="@Model.ProjectId" /><br />
 
                 <button class="mainColor" type="submit" asp-area="" asp-controller="Task" asp-action="CreateForProject">Создать</button>
             </form>

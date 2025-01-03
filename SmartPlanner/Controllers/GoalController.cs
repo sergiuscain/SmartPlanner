@@ -102,5 +102,10 @@ namespace SmartPlanner.Controllers
             await _storage.AddPointsAsync(id, points);
             return RedirectToAction("Index");
         }
+        public async Task<IActionResult> AddPointsForProjects(Guid id, int points, Guid projectId)
+        {
+            await _storage.AddPointsAsync(id, points);
+            return RedirectToAction("Details", "Projects", new { id = projectId, tab = "Goals" });
+        }
     }
 }
