@@ -35,7 +35,7 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="actionMenuButton">
                     <li>
-                        <form asp-action="Edit" method="post">
+                        <form asp-controller="Goal" asp-action="Edit" method="post">
                             <input type="hidden" asp-for="@goal.Description" value="@goal.Description" />
                             <input type="hidden" asp-for="@goal.CurrentProgress" value="@goal.CurrentProgress" />
                             <input type="hidden" asp-for="@goal.TotalProgress" value="@goal.TotalProgress" /><br />

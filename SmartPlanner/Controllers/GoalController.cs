@@ -75,6 +75,8 @@ namespace SmartPlanner.Controllers
         {
             var goalDb = goal.ToDbModel();
             await _storage.EditAsync(goalDb);
+            if (goal.ProjectId != null)
+                return RedirectToAction("Details", "Projects", new { id = goal.ProjectId, tab = "Goals" });
             return RedirectToAction("Index");
         }
         public async Task<IActionResult> CreateTest()
@@ -94,7 +96,10 @@ namespace SmartPlanner.Controllers
         }
         public async Task<ActionResult> Delete(Guid id)
         {
+            var goal = await _storage.GetByIdAsync(id);
             await _storage.DeleteAsync(id);
+            if (goal.ProjectId != null)
+                return RedirectToAction("Details", "Projects", new { id = goal.ProjectId, tab = "Goals" });
             return RedirectToAction("Index");
         }
         public async Task<IActionResult> AddPoints(Guid id, int points)
