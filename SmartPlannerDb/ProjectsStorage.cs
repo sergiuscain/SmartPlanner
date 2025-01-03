@@ -22,7 +22,10 @@ namespace SmartPlannerDb
         }
         public async Task DeleteAsync(Guid id)
         {
-            var project = await _context.Projects.FirstOrDefaultAsync(p => p.ProjectId == id);
+            var project = await _context.Projects.Include(p => p.Tasks).Include(p => p.Goals).Include(p => p.Notes).FirstOrDefaultAsync(p => p.ProjectId == id);
+            _context.Goals.RemoveRange(project.Goals);
+            _context.Tasks.RemoveRange(project.Tasks);
+            _context.Notes.RemoveRange(project.Notes);
             _context.Projects.Remove(project);
             await _context.SaveChangesAsync();
         }
