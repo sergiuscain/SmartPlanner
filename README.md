@@ -35,8 +35,6 @@
     <h1>Регистрация и авторизация:</h1>
     <p>Используется Asp.Identity.</p>
     <h1>Скриншоты:</h1>
-    <h3>Проекты:</h3>
-    <img src="https://github.com/user-attachments/assets/62dd1760-b989-4a51-aae1-d761ceca3c3d" alt="Проекты"/>
     <h3>Задачи в проекте:</h3>
     <img src="https://github.com/user-attachments/assets/e049d39c-4e24-479e-a158-e70f1a615271" alt="Задачи в проекте"/>
     <h3>Подзадачи:</h3>
